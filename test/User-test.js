@@ -5,6 +5,11 @@ const userData = sampleData[0];
 const User = require('../src/User');
 
 describe('User', function() {
+  const user;
+  beforeEach(function() {
+    user = new User(userData);
+  });
+
   it('should be a function', function() {
     expect(User).to.be.a('function');
   });
@@ -26,6 +31,4 @@ describe('User', function() {
   it('should be able to return the first name of the user', function() {
     expect(user.getFirstName()).to.equal("Luisa");
   });
-
-
 });

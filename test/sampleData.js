@@ -18,7 +18,7 @@ const sampleData = [
     "address": "30086 Kathryn Port, Ciceroland NE 07273",
     "email": "Dimitri.Bechtelar11@gmail.com",
     "strideLength": 4.5,
-    "dailyStepGoal": 5000,
+    "dailyStepGoal": 20000,
     "friends": [
       9,
       18,
@@ -32,7 +32,7 @@ const sampleData = [
     "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
     "email": "Elwin.Tromp@yahoo.com",
     "strideLength": 4.4,
-    "dailyStepGoal": 5000,
+    "dailyStepGoal": 30000,
     "friends": [
       19,
       11,
