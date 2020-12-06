@@ -1,17 +1,20 @@
 //Query Selectors
 let userInfo = document.querySelector(".user-info");
+let displayMessage = document.querySelector(".display-message");
 
 //Event Listeners
-window.addEventListener("load", displayUserInfo);
-
+window.addEventListener("load", initializeUserInfo);
 
 //Global Variables
 let activeUser = new User(sampleData[1]);
 
-console.log(activeUser);
 //Event Handlers and Functions
+function initializeUserInfo() {
+  displayUserInfo();
+  greetUser();
+}
+
 function displayUserInfo() {
-  console.log(activeUser);
   userInfo.innerHTML = `
   <p class="user-name">Name: ${activeUser.name}</p>
   <p class="user-address">Address: ${activeUser.address}</p>
@@ -21,3 +24,8 @@ function displayUserInfo() {
   `;
 }
 
+function greetUser() {
+  displayMessage.innerText = `
+    Welcome to FitLit, ${activeUser.getFirstName()}!
+  `;
+}
