@@ -1,25 +1,13 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
+const userRepository = require('../src/userRepository');
 
 describe('UserRepository', function() {
   let userRepo;
-  const newUser = {
-    "id": 4,
-    "name": "Morris",
-    "address": "123 Denver",
-    "email": "DJKhaled.com",
-    "strideLength": 9.9,
-    "dailyStepGoal": 20000,
-    "friends": [
-      12,
-      5,
-      8
-    ]
-  };
 
   beforeEach(function() {
-    userRepo = new UserRepository(newUser);
+    userRepo = new UserRepository(sampleData);
   });
 
   it('should be a function', function() {
@@ -34,11 +22,6 @@ describe('UserRepository', function() {
     expect(allUsers).to.be.an(Array);
     expect(allUsers[0].name).to.equal("Luisa Hane");
   });
-
-  it('should be able to store a new user by pushing an object into all users', function() {
-
-    expect(sampleData.length).to.equal(4);
-  })
 
   it('should be able to return user data given the ID', function() {
     expect(userRepo.getUserData(1)).to.equal({
