@@ -41,6 +41,55 @@ const sampleData = [
     ]
   }
 ];
+
+const sampleHydration = [{
+  "userID": 1,
+  "date": "2019/06/15",
+  "numOunces": 1
+},
+{
+  "userID": 2,
+  "date": "2019/06/15",
+  "numOunces": 2
+},
+{
+  "userID": 3,
+  "date": "2019/06/15",
+  "numOunces": 3
+},
+{
+  "userID": 1,
+"date": "2019/06/16",
+"numOunces": 4
+},
+{
+"userID": 2,
+"date": "2019/06/16",
+"numOunces": 5
+},
+{
+"userID": 3,
+"date": "2019/06/16",
+"numOunces": 6
+},
+{
+  "userID": 1,
+"date": "2019/06/17",
+"numOunces": 7
+},
+{
+"userID": 2,
+"date": "2019/06/17",
+"numOunces": 8
+},
+{
+"userID": 3,
+"date": "2019/06/17",
+"numOunces": 9
+},]
+
+
 if (typeof module !== 'undefined') {
   module.exports = sampleData;
+  module.exports = sampleHydration;
 }
