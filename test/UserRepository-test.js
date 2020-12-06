@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
-const userRepository = require('../src/userRepository');
+const UserRepository = require('../src/UserRepository');
 
 describe('UserRepository', function() {
   let userRepo;
@@ -15,16 +15,16 @@ describe('UserRepository', function() {
   });
 
   it('should instantiate a UserRepository', function() {
-    expect(userRepo).to.equal(new UserRepository(sampleData));
+    expect(userRepo).to.be.an.instanceof(UserRepository);
   });
 
   it('should hold all the user objects', function() {
-    expect(allUsers).to.be.an(Array);
-    expect(allUsers[0].name).to.equal("Luisa Hane");
+    expect(userRepo.allUsers).to.be.a('array');
+    expect(userRepo.allUsers[0].name).to.equal("Luisa Hane");
   });
 
   it('should be able to return user data given the ID', function() {
-    expect(userRepo.getUserData(1)).to.equal({
+    expect(userRepo.getUserData(1)).to.deep.equal({
       "id": 1,
       "name": "Luisa Hane",
       "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",

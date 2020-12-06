@@ -41,3 +41,6 @@ const sampleData = [
     ]
   }
 ];
+if (typeof module !== 'undefined') {
+  module.exports = sampleData;
+}
