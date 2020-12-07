@@ -2,8 +2,8 @@ const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
 const sampleHydration = sampleData.sampleHydration;
-const User = require('../src/User');
-const UserRepository = require('../src/UserRepository');
+const HydrationDay = require('../src/HydrationDay');
+const HydrationRepo = require('../src/HydrationRepo');
 
 describe('HydrationRepo', function() {
   let hydrationRepo;
@@ -30,10 +30,9 @@ describe('HydrationRepo', function() {
     expect(hydrationRepo.userLifetime(1).to.equal(4))
   });
 
-  it('should have a method returning the average fluid ounces consumed per week', function() {
-    expect(hydrationRepo.userWeek(1).to.equal(4));
-
-    hydrationRepo.userWeek.slice(-7, -1)
+  it('should have a method returning the last 7 fluid ounces consumed per day', function() {
+    hydrationRepo.retrieveWeekHydration(1, "2019/06/21");
+    expect(hydrationRepo.waterForWeek).to.deep.equal([1, 4, 7, 4, 4, 4, 10]);
   });
 
 });
