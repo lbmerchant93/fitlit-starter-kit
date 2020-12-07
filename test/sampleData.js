@@ -1,4 +1,4 @@
-const sampleData = [
+const sampleUserData = [
   {
     "id": 1,
     "name": "Luisa Hane",
@@ -110,6 +110,5 @@ const sampleHydration = [{
 
 
 if (typeof module !== 'undefined') {
-  module.exports = sampleData;
-  module.exports = sampleHydration;
+  module.exports = {sampleUserData, sampleHydration};
 }

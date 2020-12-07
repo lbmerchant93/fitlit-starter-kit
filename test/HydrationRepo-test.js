@@ -1,15 +1,17 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
-const sampleHydration = sampleData.sampleHydration;
-const HydrationDay = require('../src/HydrationDay');
+
+const Hydration = require('../src/Hydration');
 const HydrationRepo = require('../src/HydrationRepo');
+
+console.log(sampleData);
 
 describe('HydrationRepo', function() {
   let hydrationRepo;
 
   beforeEach(function() {
-    hydrationRepo = new HydrationRepo(sampleHydration);
+    hydrationRepo = new HydrationRepo(sampleData.sampleHydration);
   });
 
   it('should be a function', function() {

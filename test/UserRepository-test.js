@@ -1,13 +1,14 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
+const sampleUserData = sampleData.sampleUserData;
 const UserRepository = require('../src/UserRepository');
 
 describe('UserRepository', function() {
   let userRepo;
 
   beforeEach(function() {
-    userRepo = new UserRepository(sampleData);
+    userRepo = new UserRepository(sampleData.sampleUserData);
   });
 
   it('should be a function', function() {

@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
-// const userData = sampleData[0];
+const userData = sampleData.sampleUserData[0];
 const User = require('../src/User');
 
 
@@ -9,18 +9,6 @@ describe('User', function() {
   let user, example;
 
   beforeEach(function() {
-    userData = {"id": 1,
-      "name": "Luisa Hane",
-      "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
-      "email": "Diana.Hayes1@hotmail.com",
-      "strideLength": 4.3,
-      "dailyStepGoal": 10000,
-      "friends": [
-        16,
-        4,
-        8
-      ]
-    };
     user = new User(userData);
   });
 
