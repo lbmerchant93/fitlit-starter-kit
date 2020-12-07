@@ -23,8 +23,8 @@ describe('Hydration', function() {
     expect(hydration.date).to.equal("2019/06/15");
     expect(hydration.numOunces).to.equal(1);
   });
-  it('should have a method to return the fluid onces they consumed for that day'), function() {
+  it('should have a method to return the fluid onces they consumed for that day', function() {
     expect(hydration.returnFluidOuncesConsumed()).to.equal(1);
-  }
+  })
 
 });
