@@ -164,7 +164,8 @@ const sampleSleep = [{
   "date": "2019/06/16",
   "hoursSlept": 10.7,
   "sleepQuality": 3.4
-},{
+},
+{
   "userID": 1,
   "date": "2019/06/17",
   "hoursSlept": 8,
@@ -217,7 +218,8 @@ const sampleSleep = [{
   "date": "2019/06/19",
   "hoursSlept": 7.2,
   "sleepQuality": 3.4
-},{
+},
+{
   "userID": 1,
   "date": "2019/06/20",
   "hoursSlept": 9.3,
