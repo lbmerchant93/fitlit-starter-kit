@@ -11,7 +11,7 @@ window.addEventListener("load", initializeUserInfo);
 //Global Variables
 let activeUser = new User(sampleUserData[1]);
 let userRepo = new UserRepository(sampleUserData);
-let hydration = new Hydration(sampleHydration[1]);
+let hydration = new Hydration(sampleHydration[0]);
 let hydrationRepo = new HydrationRepo(sampleHydration);
 
 //Event Handlers and Functions
