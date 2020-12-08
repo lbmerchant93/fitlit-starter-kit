@@ -28,6 +28,12 @@ describe('Hydration', function() {
     expect(hydration2.date).to.equal("2019/06/15");
     expect(hydration2.numOunces).to.equal(2);
   });
+
+  it('should not take anything but an object as an argument', function() {
+    let hydration3 = new Hydration([2, 3]);
+    expect(hydration3.userID).to.equal(undefined);
+  });
+
   it('should have a method to return the fluid onces they consumed for that day', function() {
     expect(hydration1.returnFluidOuncesConsumed()).to.equal(1);
     expect(hydration2.returnFluidOuncesConsumed()).to.equal(2);
