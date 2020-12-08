@@ -3,6 +3,7 @@ let userInfo = document.querySelector(".user-info");
 let displayMessage = document.querySelector(".display-message");
 let stepGoalComparison = document.querySelector(".step-goal-comparison");
 let hydrationWeekDisplay = document.querySelector(".hydration-week");
+let hydrationTodayDisplay = document.querySelector(".hydration-today");
 
 //Event Listeners
 window.addEventListener("load", initializeUserInfo);
@@ -19,6 +20,7 @@ function initializeUserInfo() {
   greetUser();
   compareStepGoals();
   displayHydrationWeek();
+  displayHydrationToday()
 }
 
 function displayUserInfo() {
@@ -55,7 +57,10 @@ function displayHydrationWeek() {
   });
 }
 
-
+function displayHydrationToday() {
+  let waterToday = hydration.returnFluidOuncesConsumed();
+  hydrationTodayDisplay.innerText = `You drank ${waterToday} ounces today.`
+}
 
 
 //
