@@ -18,7 +18,7 @@ class HydrationRepo {
     return desiredWeek.reduce((week, hydration) => {
       week[hydration.date] = hydration.numOunces;
       return week;
-    },{});
+    }, {});
   }
 }
 
