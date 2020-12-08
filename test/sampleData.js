@@ -93,9 +93,19 @@ const sampleHydration = [{
   "numOunces": 4
 },
 {
+  "userID": 2,
+  "date": "2019/06/18",
+  "numOunces": 5
+},
+{
   "userID": 1,
   "date": "2019/06/19",
   "numOunces": 4
+},
+{
+  "userID": 2,
+  "date": "2019/06/19",
+  "numOunces": 5
 },
 {
   "userID": 1,
@@ -103,9 +113,19 @@ const sampleHydration = [{
   "numOunces": 4
 },
 {
+  "userID": 2,
+  "date": "2019/06/20",
+  "numOunces": 5
+},
+{
   "userID": 1,
   "date": "2019/06/21",
   "numOunces": 10
+},
+{
+  "userID": 2,
+  "date": "2019/06/21",
+  "numOunces": 5
 }];
 
 
