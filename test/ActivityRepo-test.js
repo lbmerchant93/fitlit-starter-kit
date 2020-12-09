@@ -1,35 +1,37 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
+const User = require('../src/User');
 const ActivityRepo = require('../src/ActivityRepo');
 
 describe('ActivityRepo', function() {
-  let activityRepo;
+  let activityRepo, user1;
 
   beforeEach(function() {
-    hydrationRepo = new HydrationRepo(sampleData.sampleActivity);
+    user1 = new User(sampleData.sampleUserData[0]);
+    activityRepo = new ActivityRepo(sampleData.sampleActivity);
   });
 
   it('should be a function', function() {
-    expect(ActivitRepo).to.be.a('function');
+    expect(ActivityRepo).to.be.a('function');
   });
 
   it('should hold all the Activity objects', function() {
     expect(activityRepo.allActivities).to.be.an('array');
     expect(activityRepo.allActivities[0].numSteps).to.equal(3577);
-    expect(hydrationRepo.allActivities[1].numSteps).to.equal(4294);
+    expect(activityRepo.allActivities[1].numSteps).to.equal(4294);
   });
 
   it('should return the miles a user has walked based on their number of steps, on a specified date', function() {
-    expect(activityRepo.gatherMilesWalked()).to.equal(2.913087121);
+    expect(activityRepo.gatherMilesWalked(user1, "2019/06/15")).to.equal(2.9);
   });
 
   it('should return how many minutes a user specified by id, was active for a given day',  function() {
-    expect(activityRepo.gatherMinutesActive()).to.equal(140)
+    expect(activityRepo.gatherMinutesActive(user1, "2019/06/15")).to.equal(140)
   });
 
   it('should return average minutes a user was active for a given week', function() {
-    expect(activityRepo.calcAverageMinActivePerWeek()).to.equal(171.14)
+    expect(activityRepo.calcAverageMinActiveForAWeek(1, "2019/06/21")).to.equal(171.1)
   });
 
   it('should determine if they hit their step goal for a given day', function() {
