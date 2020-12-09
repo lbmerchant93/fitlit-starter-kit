@@ -21,7 +21,7 @@ describe('ActivityRepo', function() {
   });
 
   it('should return the miles a user has walked based on their number of steps, on a specified date', function() {
-    expect(activityRepo.gatherMilesWalked()).to.equal(2.913087121));
+    expect(activityRepo.gatherMilesWalked()).to.equal(2.913087121);
   });
 
   it('should return how many minutes a user specified by id, was active for a given day',  function() {

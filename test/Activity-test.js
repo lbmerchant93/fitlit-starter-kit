@@ -26,8 +26,8 @@ describe('Activity', function() {
     expect(activity2.userID).to.equal(2);
     expect(activity2.date).to.equal("2019/06/15");
     expect(activity2.numSteps).to.equal(4294);
-    expect(activity1.minutesActive).to.equal(138);
-    expect(activity1.flightsOfStairs).to.equal(10);
+    expect(activity2.minutesActive).to.equal(138);
+    expect(activity2.flightsOfStairs).to.equal(10);
   });
 
 });
