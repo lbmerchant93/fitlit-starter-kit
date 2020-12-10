@@ -7,6 +7,11 @@ let hydrationTodayDisplay = document.querySelector(".hydration-today");
 let latestSleep = document.querySelector(".latest-sleep");
 let weekSleeps = document.querySelector(".week-sleeps");
 let averageSleepData = document.querySelector(".average-sleep");
+let numStepsDay = document.querySelector(".num-steps");
+let minsActive = document.querySelector(".mins-active");
+let distanceWalked = document.querySelector(".distance-walked");
+let compareToAll = document.querySelector(".compare-to-all");
+let weeklyView = document.querySelector(".weekly-view");
 
 //Event Listeners
 window.addEventListener("load", initializeUserInfo);
@@ -18,6 +23,7 @@ let hydration = new Hydration(sampleHydration[0]);
 let hydrationRepo = new HydrationRepo(sampleHydration);
 let sleep = new Sleep(sampleSleep[0]);
 let sleepRepo = new SleepRepo(sampleSleep);
+let activityRepo = new ActivityRepo(sampleActivity);
 
 //Event Handlers and Functions
 function initializeUserInfo() {
@@ -31,6 +37,11 @@ function initializeUserInfo() {
   displaySleepQualityWeek();
   displayAverageSleepQuality();
   displayAverageSleptHours();
+  displayDailySteps();
+  displayMinsActiveToday();
+  displayMilesWalked();
+  displayComparisons();
+
 }
 
 function displayUserInfo() {
@@ -71,6 +82,15 @@ function displayHydrationToday() {
   hydrationTodayDisplay.innerText = `You drank ${waterToday} ounces today.`
 }
 
+function displayDailySteps() {
+  let steps = activityRepo.getStepsToday(activeUser, "2019/06/21");
+  numStepsDay.innerText = `You have walked ${steps} steps today!`;
+}
+
+function displayMinsActiveToday() {
+  let mins = activityRepo.gatherMinutesActive(activeUser, "2019/06/21");
+  minsActive.innerText = `You were active ${mins} minutes today!`
+}
 
 function userLatestHoursSleptAndQuality() {
   latestSleep.innerText = `You slept ${sleepRepo.getHoursSlept(activeUser.id, "2019/06/21")} hours last night. You ranked it with a quality of ${sleepRepo.getQualitySlept(activeUser.id, "2019/06/21")}.`
@@ -105,4 +125,15 @@ function displayAverageSleptHours() {
   Your average hours slept is ${averageSleptHours}!
   `;
 }
-//
+
+function displayMilesWalked() {
+  let miles = activityRepo.gatherMilesWalked(activeUser, "2019/06/21");
+  distanceWalked.innerText = `You walked ${miles} miles today!`
+}
+
+function displayComparisons() {
+  compareToAll.innerText = `You climbed ${activityRepo.gatherStairsClimbed(activeUser, "2019/06/21")} The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "flightsOfStairs")}. 
+  You walked ${activityRepo.getStepsToday(activeUser, "2019/06/21")} The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "numSteps")}
+  You were active for ${activityRepo.gatherMinutesActive(activeUser, "2019/06/21")} minutes today. The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "minutesActive")}
+  `
+}

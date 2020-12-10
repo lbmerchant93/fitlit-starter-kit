@@ -2,6 +2,10 @@ class ActivityRepo {
   constructor(activies) {
     this.allActivities = activies;
   }
+  getStepsToday(user, date) {
+    let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
+    return specificDay.numSteps;
+  }
   gatherMilesWalked(user, date) {
     let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
     let int = ((user.strideLength * specificDay.numSteps) / 5280).toFixed(1);
@@ -10,6 +14,10 @@ class ActivityRepo {
   gatherMinutesActive(user, date) {
     let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
     return specificDay.minutesActive;
+  }
+  gatherStairsClimbed(user, date) {
+    let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
+    return specificDay.flightsOfStairs;
   }
   calcAverageMinActiveForAWeek(user, date) {
     let userActivities = this.allActivities.filter(activity => activity.userID === user.id);
