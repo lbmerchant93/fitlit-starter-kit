@@ -41,33 +41,15 @@ class ActivityRepo {
     });
     return userActivities[0].flightsOfStairs;
   }
-  allAverageStairsClimbedForDate(date) {
+  averageAllPropertyForDate(date, property) {
     let desiredDay = this.allActivities.filter(activity => activity.date === date);
-    let sumDayStairsClimbed = desiredDay.reduce((totalStairs, activity) => {
-      totalStairs += activity.flightsOfStairs;
-      return totalStairs;
+    let sumActive = desiredDay.reduce((totalActive, activity) => {
+      totalActive += activity[property];
+      return totalActive;
     }, 0);
-    return parseFloat((sumDayStairsClimbed / desiredDay.length).toFixed(1));
-  }
-  allAverageStepsTakenForDate(date) {
-    let desiredDay = this.allActivities.filter(activity => activity.date === date);
-    let sumDayStepsTaken = desiredDay.reduce((totalSteps, activity) => {
-      totalSteps += activity.numSteps;
-      return totalSteps;
-    }, 0);
-    return parseFloat((sumDayStepsTaken / desiredDay.length).toFixed(1));
-  }
-  allAverageMinActiveForDate(date) {
-    let desiredDay = this.allActivities.filter(activity => activity.date === date);
-    let sumDayMinActive = desiredDay.reduce((totalMinActive, activity) => {
-      totalMinActive += activity.minutesActive;
-      return totalMinActive;
-    }, 0);
-    return parseFloat((sumDayMinActive / desiredDay.length).toFixed(1));
+    return parseFloat((sumActive / desiredDay.length).toFixed(1));
   }
 }
-
-
 
 if (typeof module !== 'undefined') {
   module.exports = ActivityRepo;

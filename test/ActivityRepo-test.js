@@ -20,6 +20,7 @@ describe('ActivityRepo', function() {
     expect(activityRepo.allActivities).to.be.an('array');
     expect(activityRepo.allActivities[0].numSteps).to.equal(3577);
     expect(activityRepo.allActivities[1].numSteps).to.equal(4294);
+    expect(activityRepo.allActivities.length).to.equal(21);
   });
 
   it('should return the miles a user has walked based on their number of steps, on a specified date', function() {
@@ -48,18 +49,18 @@ describe('ActivityRepo', function() {
   });
 
   it('should find the average stairs climbed for a specified date for all users', function() {
-    expect(activityRepo.allAverageStairsClimbedForDate("2019/06/15")).to.equal(19.7);
-    expect(activityRepo.allAverageStairsClimbedForDate("2019/06/16")).to.equal(27);
+    expect(activityRepo.averageAllPropertyForDate("2019/06/15", "flightsOfStairs")).to.equal(19.7);
+    expect(activityRepo.averageAllPropertyForDate("2019/06/16", "flightsOfStairs")).to.equal(27);
   });
 
   it('should find the average steps taken for a specific date for all users', function() {
-    expect(activityRepo.allAverageStepsTakenForDate("2019/06/15")).to.equal(5091);
-    expect(activityRepo.allAverageStepsTakenForDate("2019/06/16")).to.equal(7684.3);
+    expect(activityRepo.averageAllPropertyForDate("2019/06/15", "numSteps")).to.equal(5091);
+    expect(activityRepo.averageAllPropertyForDate("2019/06/16", "numSteps")).to.equal(7684.3);
   });
 
-  it('should find the average minutes active for a specific date', function() {
-    expect(activityRepo.allAverageMinActiveForDate("2019/06/15")).to.equal(131.3);
-    expect(activityRepo.allAverageMinActiveForDate("2019/06/16")).to.equal(182.3);
+  it('should find the average minutes active for a specific date for all users', function() {
+    expect(activityRepo.averageAllPropertyForDate("2019/06/15", "minutesActive")).to.equal(131.3);
+    expect(activityRepo.averageAllPropertyForDate("2019/06/16", "minutesActive")).to.equal(182.3);
   });
 
 });
