@@ -35,8 +35,8 @@ function initializeUserInfo() {
   userLatestHoursSleptAndQuality();
   displaySleptHoursWeek();
   displaySleepQualityWeek();
-  displayAverageSleepQuality();
-  displayAverageSleptHours();
+  displayAverageSleepForProperty('hoursSlept');
+  displayAverageSleepForProperty('sleepQuality');
   displayDailySteps();
   displayMinsActiveToday();
   displayMilesWalked();
@@ -93,37 +93,52 @@ function displayMinsActiveToday() {
 }
 
 function userLatestHoursSleptAndQuality() {
-  latestSleep.innerText = `You slept ${sleepRepo.getHoursSlept(activeUser.id, "2019/06/21")} hours last night. You ranked it with a quality of ${sleepRepo.getQualitySlept(activeUser.id, "2019/06/21")}.`
+  latestSleep.innerText = `You slept ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "hoursSlept")} hours last night. You ranked it with a quality of ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "sleepQuality")}.`
 }
 
 function displaySleptHoursWeek() {
-  let weekSleptHours = sleepRepo.getUserWeekHours(1, "2019/06/21");
-  Object.keys(weekSleptHours).forEach(day => {
+  let week = sleepRepo.getUserSleepWeekInfo(1, "2019/06/21", "hoursSlept");
+  Object.keys(week).forEach(day => {
     weekSleeps.innerText += `
-      On ${day}, you slept ${weekSleptHours[day]} hours.
+      On ${day}, you slept ${week[day]} hours.
     `
   });
 }
 
 function displaySleepQualityWeek() {
-  let weekSleepQuality = sleepRepo.getUserWeekQuality(1, "2019/06/21");
-  Object.keys(weekSleepQuality).forEach(day => {
+  let week = sleepRepo.getUserSleepWeekInfo(1, "2019/06/21", "sleepQuality");
+  Object.keys(week).forEach(day => {
     weekSleeps.innerText += `
-      On ${day}, your sleep quality was ranked ${weekSleepQuality[day]}.
+      On ${day}, your sleep quality was ranked ${week[day]}.
     `
   });
 }
 
-function displayAverageSleepQuality() {
-  let averageSleepQuality = sleepRepo.getAvgSleepData(activeUser.id, 'sleepQuality');
-  averageSleepData.innerText += `Your average sleep quality is ${averageSleepQuality}!`;
-}
+// function displayAverageSleepQuality() {
+//   let averageSleepQuality = sleepRepo.getAvgSleepData(activeUser.id, 'sleepQuality');
+//   averageSleepData.innerText += `Your average sleep quality is ${averageSleepQuality}!`;
+// }
+//
+// function displayAverageSleptHours() {
+//   let averageSleptHours = sleepRepo.getAvgSleepData(activeUser.id, 'hoursSlept');
+//   averageSleepData.innerText += `
+//   Your average hours slept is ${averageSleptHours}!
+//   `;
+// }
 
-function displayAverageSleptHours() {
-  let averageSleptHours = sleepRepo.getAvgSleepData(activeUser.id, 'hoursSlept');
-  averageSleepData.innerText += `
-  Your average hours slept is ${averageSleptHours}!
-  `;
+
+//this function is more than 10 lines long but dynamic, replacing the two funcitons above
+function displayAverageSleepForProperty(property) {
+    let averageSleptInfo = sleepRepo.getAvgSleepData(activeUser.id, property);
+    if(property === 'hoursSlept'){
+      averageSleepData.innerText += `
+      Your average hours slept ${averageSleptInfo}!
+      `;
+    } else if(property === 'sleepQuality') {
+      averageSleepData.innerText += `
+      Your average sleep quality is ${averageSleptInfo}!
+      `;
+    }
 }
 
 function displayMilesWalked() {
@@ -132,7 +147,7 @@ function displayMilesWalked() {
 }
 
 function displayComparisons() {
-  compareToAll.innerText = `You climbed ${activityRepo.gatherStairsClimbed(activeUser, "2019/06/21")} The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "flightsOfStairs")}. 
+  compareToAll.innerText = `You climbed ${activityRepo.gatherStairsClimbed(activeUser, "2019/06/21")} The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "flightsOfStairs")}.
   You walked ${activityRepo.getStepsToday(activeUser, "2019/06/21")} The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "numSteps")}
   You were active for ${activityRepo.gatherMinutesActive(activeUser, "2019/06/21")} minutes today. The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "minutesActive")}
   `
