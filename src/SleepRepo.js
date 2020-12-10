@@ -3,22 +3,12 @@ class SleepRepo {
     this.allSleeps = sleeps;
   }
 
-  getAvgSleepHours(id) {
+  getAvgSleepData(id, property) {
     let allUserSleeps = this.allSleeps.filter(sleep => {
       return sleep.userID === id;
     })
     let sumSleep = allUserSleeps.reduce((total, day) => {
-      return total += day.hoursSlept;
-    }, 0)
-    return Math.floor(sumSleep / allUserSleeps.length);
-  }
-
-  getAvgSleepQuality(id) {
-    let allUserSleeps = this.allSleeps.filter(sleep => {
-      return sleep.userID === id;
-    })
-    let sumSleep = allUserSleeps.reduce((total, day) => {
-      return total += day.sleepQuality;
+      return total += day[property];
     }, 0)
     return Math.floor(sumSleep / allUserSleeps.length);
   }
@@ -67,7 +57,7 @@ class SleepRepo {
     let userSleeps = this.allSleeps.filter(sleep => sleep.userID === id);
     let desiredDateIndex = userSleeps.map(sleep => sleep.date).indexOf(date);
     let desiredWeek = userSleeps.slice(desiredDateIndex - 6, desiredDateIndex + 1);
-    let weekTotal =  desiredWeek.reduce((weekTotal, sleep) => {
+    let weekTotal = desiredWeek.reduce((weekTotal, sleep) => {
       weekTotal += sleep.sleepQuality;
       return weekTotal;
     }, 0);

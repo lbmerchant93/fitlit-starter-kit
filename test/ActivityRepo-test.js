@@ -27,7 +27,7 @@ describe('ActivityRepo', function() {
     expect(activityRepo.gatherMilesWalked(user1, "2019/06/15")).to.equal(2.9);
   });
 
-  it('should return how many minutes a user specified by id, was active for a given day',  function() {
+  it('should return how many minutes a user specified by id, was active for a given day', function() {
     expect(activityRepo.gatherMinutesActive(user1, "2019/06/15")).to.equal(140)
   });
 
@@ -44,7 +44,7 @@ describe('ActivityRepo', function() {
     expect(activityRepo.allHitStepGoals(user1)).to.deep.equal(["2019/06/17", "2019/06/20"]);
   });
 
-  it('should find a user\'s all-time stair climbing record',function() {
+  it('should find a user\'s all-time stair climbing record', function() {
     expect(activityRepo.userStairClimbingRecord(user1)).to.equal(36);
   });
 

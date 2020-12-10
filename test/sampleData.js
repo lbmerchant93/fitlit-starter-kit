@@ -235,7 +235,8 @@ const sampleSleep = [{
     "date": "2019/06/20",
     "hoursSlept": 9.4,
     "sleepQuality": 1.2
-  }, {
+  },
+  {
     "userID": 1,
     "date": "2019/06/21",
     "hoursSlept": 7.8,
@@ -409,6 +410,7 @@ if (typeof module !== 'undefined') {
   module.exports = {
     sampleUserData,
     sampleHydration,
-    sampleSleep, sampleActivity
+    sampleSleep,
+    sampleActivity
   };
 }

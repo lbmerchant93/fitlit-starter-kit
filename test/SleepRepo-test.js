@@ -58,11 +58,11 @@ describe('SleepRepo', function() {
   });
 
   it('should have a method returning average number of hours slept per day', function() {
-    expect(sleepRepoBig.getAvgSleepHours(1)).to.equal(8);
+    expect(sleepRepoBig.getAvgSleepData(1, "hoursSlept")).to.equal(8);
   });
 
   it('should be able to calculate average sleep quality per day over all time', function() {
-    expect(sleepRepoBig.getAvgSleepQuality(1)).to.equal(2);
+    expect(sleepRepoBig.getAvgSleepData(1, "sleepQuality")).to.equal(2);
   });
 
   it('should be able to display how many hours were slept on a specific date', function() {
@@ -105,7 +105,7 @@ describe('SleepRepo', function() {
     expect(sleepRepoBig.checkUserOverThree("2019/06/21", 1)).to.equal(2.6);
   });
 
-  it.only('should filter all users whos sleep quality for the week is over 3', function() {
+  it('should filter all users whos sleep quality for the week is over 3', function() {
     const userRep = new UserRepo(sampleData.sampleUserData);
     expect(sleepRepoBig.findAllUsersOverThree(userRep, "2019/06/21")).to.deep.equal([2, 3])
   })
