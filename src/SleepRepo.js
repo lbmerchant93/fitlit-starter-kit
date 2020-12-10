@@ -51,7 +51,6 @@ class SleepRepo {
     let desiredWeek = userSleeps.slice(desiredDateIndex - 6, desiredDateIndex + 1);
     return desiredWeek.reduce((week, sleep) => {
       week[sleep.date] = sleep.sleepQuality;
-      console.log(week);
       return week;
     }, {});
   }
@@ -64,18 +63,28 @@ class SleepRepo {
     return Math.floor(sumAllSleeps / this.allSleeps.length);
   }
 
-  // getUsersOverThree(date) {
+  checkUserOverThree(date, id) {
+    let userSleeps = this.allSleeps.filter(sleep => sleep.userID === id);
+    let desiredDateIndex = userSleeps.map(sleep => sleep.date).indexOf(date);
+    let desiredWeek = userSleeps.slice(desiredDateIndex - 6, desiredDateIndex + 1);
+    let weekTotal =  desiredWeek.reduce((weekTotal, sleep) => {
+      weekTotal += sleep.sleepQuality;
+      return weekTotal;
+    }, 0);
+    return parseFloat((weekTotal / 7).toFixed(1));
 
-  //   // run below for all users
-    
+  }
 
-  //   let userSleeps = this.allSleeps.filter(sleep => sleep.userID === id);
-  //   let desiredDateIndex = userSleeps.map(sleep => sleep.date).indexOf(date);
-  //   let desiredWeek = userSleeps.slice(desiredDateIndex - 6, desiredDateIndex + 1);
+  findAllUsersOverThree(userRepo, date) {
+    let restedUsers = userRepo.allUsers.filter(user => {
+      let userAvg = this.checkUserOverThree(date, user.id);
+      if (userAvg > 3) {
+        return user.id;
+      }
+    })
+    return restedUsers.map(user => user.id)
+  }
 
-  //   // reduce the week to an average 
-  //   // filter average over 3, return user ID
-  // }
 
   findMostRestedUsers(date) {
     let desiredDay = this.allSleeps.filter(sleep => sleep.date === date);
