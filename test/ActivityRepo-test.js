@@ -31,31 +31,35 @@ describe('ActivityRepo', function() {
   });
 
   it('should return average minutes a user was active for a given week', function() {
-    expect(activityRepo.calcAverageMinActiveForAWeek(1, "2019/06/21")).to.equal(171.1)
+    expect(activityRepo.calcAverageMinActiveForAWeek(user1, "2019/06/21")).to.equal(171.1)
   });
 
   it('should determine if they hit their step goal for a given day', function() {
-    expect(activityRepo.hitDailyStepGoal()).to.equal(false);
+    expect(activityRepo.hitDailyStepGoal(user1, "2019/06/15")).to.equal(false);
+    expect(activityRepo.hitDailyStepGoal(user1, "2019/06/17")).to.equal(true);
   });
 
   it('should find all days where a user exceeded their step goal', function() {
-    expect(activityRepo.allHitStepGoals()).to.equal(["2019/06/17", "2019/06/20"]);
+    expect(activityRepo.allHitStepGoals(user1)).to.deep.equal(["2019/06/17", "2019/06/20"]);
   });
 
   it('should find a user\'s all-time stair climbing record',function() {
-    expect(activityRepo.stairClimbingRecord()).to.equal(36);
+    expect(activityRepo.userStairClimbingRecord(user1)).to.equal(36);
   });
 
   it('should find the average stairs climbed for a specified date for all users', function() {
-    expect(activityRepo.allAverageStairsClimbedForDate()).to.equal(20.62);
+    expect(activityRepo.allAverageStairsClimbedForDate("2019/06/15")).to.equal(19.7);
+    expect(activityRepo.allAverageStairsClimbedForDate("2019/06/16")).to.equal(27);
   });
 
   it('should find the average steps taken for a specific date for all users', function() {
-    expect(activityRepo.allAverageStepsTakenForDate()).to.equal(7824.286);
+    expect(activityRepo.allAverageStepsTakenForDate("2019/06/15")).to.equal(5091);
+    expect(activityRepo.allAverageStepsTakenForDate("2019/06/16")).to.equal(7684.3);
   });
 
   it('should find the average minutes active for a specific date', function() {
-    expect(activityRepo.allAverageMinActiveForDate()).to.equal(164.19);
+    expect(activityRepo.allAverageMinActiveForDate("2019/06/15")).to.equal(131.3);
+    expect(activityRepo.allAverageMinActiveForDate("2019/06/16")).to.equal(182.3);
   });
 
 });
