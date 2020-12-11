@@ -8,12 +8,12 @@ body {
 
 body {
   display: grid;
-  grid-template-rows: 2fr 10fr;
+  grid-template-rows: 1fr 5fr;
   grid-template-columns: 1fr 3fr;
   text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial', Arial, sans-serif;
   font-size: .5rem;
-  background-color: rgb(239,240,245);
+  background-image: linear-gradient(rgb(211, 235, 243), rgb(124, 203, 255));
 }
 
 /*Header Styles*/
@@ -22,7 +22,7 @@ body {
   grid-column: 1 / 3;
   font-size: 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 11fr;
+  grid-template-columns: 1fr 9fr;
   height: 10vh;
   min-height: 150px;
 }
@@ -35,7 +35,6 @@ body {
 
 .site-title {
   grid-column: 2 / -1;
-  font-weight: normal;
 }
 
 /*Navigation Styles*/
@@ -43,39 +42,22 @@ nav {
   grid-row: 2 / 3;
   grid-column: 1 / 2;
   display: grid;
-  grid-template-rows: 1fr 6fr 5fr;
-  border-right: 1px solid grey;
+  grid-template-rows: 1fr 5fr 2fr;
+  border: 3px solid black;
 }
 
 h2 {
   grid-row: 1/ 2;
   font-size: 1.5rem;
-  font-weight: lighter;
-  padding-bottom: 2vh;
 }
 
 .user-info{
   background-color: seashell;
-  font-size: 1.2rem;
-  font-weight: lighter;
+  font-size: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
-  margin: 20px;
-  padding: 10px;
-  border-radius: 40px;
-  background-image: linear-gradient(white, lightgrey, white);
-}
-
-.friend-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 20px;
-  padding: 10px;
-  border-radius: 40px;
-  background-image: linear-gradient(white, lightgrey, white);
+  align-items: flex-start;
 }
 
 /*Fitness Card Styles*/
@@ -85,25 +67,15 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  border: 3px solid black;
 }
 
-.card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr auto 6fr;
+article {
   margin: 20px;
   padding: 10px;
   border-radius: 40px;
-  color: azure;
-}
-
-.card-header {
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  align-self: flex-start;
-  margin: 1rem;
-  font-size: 2rem;
-  font-weight: lighter;
+  border: px solid black;
+  box-shadow: 5px 5px black;
 }
 
 /* header {

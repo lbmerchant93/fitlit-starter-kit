@@ -1,8 +1,13 @@
 //Query Selectors
-let userInfo = document.querySelector(".user-info");
+let userName = document.querySelector(".user-name");
+let userAddress = document.querySelector(".user-address");
+let userEmail = document.querySelector(".user-email");
+let userStrideLength = document.querySelector(".user-stride-length");
+let userDailyStepGoal = document.querySelector(".user-daily-step-goal");
 let displayMessage = document.querySelector(".display-message");
 let stepGoalComparison = document.querySelector(".step-goal-comparison");
 let hydrationWeekDisplay = document.querySelector(".hydration-week");
+let hydrationChart = document.querySelector(".hydration-chart")
 let hydrationTodayDisplay = document.querySelector(".hydration-today");
 let latestSleep = document.querySelector(".latest-sleep");
 let weekSleeps = document.querySelector(".week-sleeps");
@@ -45,18 +50,16 @@ function initializeUserInfo() {
 }
 
 function displayUserInfo() {
-  userInfo.innerHTML = `
-  <p class="user-name">Name: ${activeUser.name}</p>
-  <p class="user-address">Address: ${activeUser.address}</p>
-  <p class="user-email">Email: ${activeUser.email}</p>
-  <p class="user-stride-length">Stride Length: ${activeUser.strideLength}</p>
-  <p class="user-daily-step-goal">Daily Step Goal: ${activeUser.dailyStepGoal}</p>
-  `;
+  userName.innerText = `Name: \n${activeUser.name}`;
+  userAddress.innerText = `Address: \n${activeUser.address}`;
+  userEmail.innerText = `Email: \n${activeUser.email}`;
+  userStrideLength.innerText = `Stride Length: \n${activeUser.strideLength}`;
+  userDailyStepGoal.innerText = `Daily Step Goal: \n${activeUser.dailyStepGoal}`;
 }
 
 function greetUser() {
   displayMessage.innerText = `
-    Welcome to FitLit, ${activeUser.getFirstName()}!
+    Welcome to FitBook, ${activeUser.getFirstName()}!
   `;
 }
 
@@ -71,11 +74,31 @@ function compareStepGoals() {
 function displayHydrationWeek() {
   let week = hydrationRepo.retrieveWeekHydration(1, "2019/06/21");
   Object.keys(week).forEach(day => {
+
     hydrationWeekDisplay.innerText += `
       On ${day}, you drank ${week[day]} ounces.
     `
   });
 }
+
+// var chart = new Chart(hydrationChart, {
+//   // The type of chart we want to create
+//   type: 'bar',
+
+//   // The data for our dataset
+//   data: {
+//       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+//       datasets: [{
+//           label: 'My First dataset',
+//           backgroundColor: 'rgb(255, 99, 132)',
+//           borderColor: 'rgb(255, 99, 132)',
+//           data: [0, 10, 5, 2, 20, 30, 45]
+//       }]
+//   },
+
+//   // Configuration options go here
+//   options: {}
+// });
 
 function displayHydrationToday() {
   let waterToday = hydration.returnFluidOuncesConsumed();
