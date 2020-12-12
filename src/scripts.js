@@ -16,7 +16,7 @@ let numStepsDay = document.querySelector(".num-steps");
 let minsActive = document.querySelector(".mins-active");
 let distanceWalked = document.querySelector(".distance-walked");
 let compareToAll = document.querySelector(".compare-to-all");
-let weeklyView = document.querySelector(".weekly-view");
+let weeklyView = document.querySelector(".steps-weekly-view");
 
 //Event Listeners
 window.addEventListener("load", initializeUserInfo);
@@ -35,7 +35,7 @@ function initializeUserInfo() {
   displayUserInfo();
   greetUser();
   compareStepGoals();
-  displayHydrationWeek();
+  // displayHydrationWeek();
   displayHydrationToday()
   userLatestHoursSleptAndQuality();
   displaySleptHoursWeek();
@@ -71,34 +71,34 @@ function compareStepGoals() {
 }
 
 //will be some type of display later not the innerText
-function displayHydrationWeek() {
-  let week = hydrationRepo.retrieveWeekHydration(1, "2019/06/21");
-  Object.keys(week).forEach(day => {
+// function displayHydrationWeek() {
+//   let week = hydrationRepo.retrieveWeekHydration(1, "2019/06/21");
+//   Object.keys(week).forEach(day => {
+//
+//     hydrationWeekDisplay.innerText += `
+//       On ${day}, you drank ${week[day]} ounces.
+//     `
+//   });
+// }
 
-    hydrationWeekDisplay.innerText += `
-      On ${day}, you drank ${week[day]} ounces.
-    `
-  });
-}
+var chart = new Chart(hydrationChart, {
+  // The type of chart we want to create
+  type: 'bar',
 
-// var chart = new Chart(hydrationChart, {
-//   // The type of chart we want to create
-//   type: 'bar',
+  // The data for our dataset
+  data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [{
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 10, 5, 2, 20, 30, 45]
+      }]
+  },
 
-//   // The data for our dataset
-//   data: {
-//       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//       datasets: [{
-//           label: 'My First dataset',
-//           backgroundColor: 'rgb(255, 99, 132)',
-//           borderColor: 'rgb(255, 99, 132)',
-//           data: [0, 10, 5, 2, 20, 30, 45]
-//       }]
-//   },
-
-//   // Configuration options go here
-//   options: {}
-// });
+  // Configuration options go here
+  options: {}
+});
 
 function displayHydrationToday() {
   let waterToday = hydration.returnFluidOuncesConsumed();
