@@ -56,6 +56,8 @@ h2 {
 
 .user-info{
   background-color: seashell;
+  box-shadow: 0px 0px 15px 1px grey;
+  color: black;
   font-size: 1.2rem;
   font-weight: lighter;
   display: flex;
@@ -65,17 +67,17 @@ h2 {
   margin: 20px;
   padding: 10px;
   border-radius: 40px;
-  background-image: linear-gradient(white, lightgrey, white);
 }
 
 .friend-info {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  box-shadow: 0px 0px 15px 1px grey;
   margin: 20px;
   padding: 10px;
   border-radius: 40px;
-  background-image: linear-gradient(white, lightgrey, white);
+  background-color: seashell;
 }
 
 /*Fitness Card Styles*/
@@ -95,6 +97,7 @@ main {
   padding: 10px;
   border-radius: 40px;
   color: azure;
+  box-shadow: 0px 0px 15px 1px grey;
 }
 
 .card-header {

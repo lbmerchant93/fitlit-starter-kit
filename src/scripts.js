@@ -1,34 +1,36 @@
 //Query Selectors
-let userName = document.querySelector(".user-name");
-let userAddress = document.querySelector(".user-address");
-let userEmail = document.querySelector(".user-email");
-let userStrideLength = document.querySelector(".user-stride-length");
-let userDailyStepGoal = document.querySelector(".user-daily-step-goal");
-let displayMessage = document.querySelector(".display-message");
-let stepGoalComparison = document.querySelector(".step-goal-comparison");
-let hydrationWeekDisplay = document.querySelector(".hydration-week");
-let hydrationChart = document.querySelector(".hydration-chart")
-let hydrationTodayDisplay = document.querySelector(".hydration-today");
-let latestSleep = document.querySelector(".latest-sleep");
-let weekSleeps = document.querySelector(".week-sleeps");
-let averageSleepData = document.querySelector(".average-sleep");
-let numStepsDay = document.querySelector(".num-steps");
-let minsActive = document.querySelector(".mins-active");
-let distanceWalked = document.querySelector(".distance-walked");
-let compareToAll = document.querySelector(".compare-to-all");
-let weeklyView = document.querySelector(".steps-weekly-view");
+
+const userName = document.querySelector(".user-name");
+const userAddress = document.querySelector(".user-address");
+const userEmail = document.querySelector(".user-email");
+const userStrideLength = document.querySelector(".user-stride-length");
+const userDailyStepGoal = document.querySelector(".user-daily-step-goal");
+const displayMessage = document.querySelector(".display-message");
+const stepGoalComparison = document.querySelector(".step-goal-comparison");
+const hydrationWeekDisplay = document.querySelector(".hydration-week");
+const hydrationChart = document.querySelector(".hydration-chart")
+const hydrationTodayDisplay = document.querySelector(".hydration-today");
+const latestSleep = document.querySelector(".latest-sleep");
+const weekSleeps = document.querySelector(".week-sleeps");
+const averageSleepData = document.querySelector(".average-sleep");
+const numStepsDay = document.querySelector(".num-steps");
+const minsActive = document.querySelector(".mins-active");
+const distanceWalked = document.querySelector(".distance-walked");
+const compareToAll = document.querySelector(".compare-to-all");
+const weeklyView = document.querySelector(".weekly-view");
+const friendsList = document.querySelector(".friends-list");
 
 //Event Listeners
 window.addEventListener("load", initializeUserInfo);
 
 //Global Variables
-let activeUser = new User(sampleUserData[1]);
-let userRepo = new UserRepository(sampleUserData);
-let hydration = new Hydration(sampleHydration[0]);
-let hydrationRepo = new HydrationRepo(sampleHydration);
-let sleep = new Sleep(sampleSleep[0]);
-let sleepRepo = new SleepRepo(sampleSleep);
-let activityRepo = new ActivityRepo(sampleActivity);
+let activeUser = new User(userData[0]);
+let userRepo = new UserRepository(userData);
+let hydration = new Hydration(hydrationData[0]);
+let hydrationRepo = new HydrationRepo(hydrationData);
+let sleep = new Sleep(sleepData[0]);
+let sleepRepo = new SleepRepo(sleepData);
+let activityRepo = new ActivityRepo(activityData);
 
 //Event Handlers and Functions
 function initializeUserInfo() {
@@ -46,6 +48,7 @@ function initializeUserInfo() {
   displayMinsActiveToday();
   displayMilesWalked();
   displayComparisons();
+  displayFriends();
 
 }
 
@@ -61,6 +64,10 @@ function greetUser() {
   displayMessage.innerText = `
     Welcome to FitBook, ${activeUser.getFirstName()}!
   `;
+}
+
+function displayFriends() {
+  friendsList.innerText = `${activeUser.friends}`;
 }
 
 //will be some type of display later not the innerText
@@ -81,18 +88,18 @@ function compareStepGoals() {
 //   });
 // }
 
-var chart = new Chart(hydrationChart, {
+let weekHydrationChart = new Chart(hydrationChart, {
   // The type of chart we want to create
   type: 'bar',
 
   // The data for our dataset
   data: {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: Object.keys(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22")),
       datasets: [{
           label: 'My First dataset',
           backgroundColor: 'rgb(255, 99, 132)',
           borderColor: 'rgb(255, 99, 132)',
-          data: [0, 10, 5, 2, 20, 30, 45]
+          data: Object.values(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22"))
       }]
   },
 
