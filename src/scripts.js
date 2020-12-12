@@ -12,6 +12,7 @@ const hydrationChart = document.querySelector(".hydration-chart")
 const hydrationTodayDisplay = document.querySelector(".hydration-today");
 const latestSleep = document.querySelector(".latest-sleep");
 const weekSleeps = document.querySelector(".week-sleeps");
+const sleepHoursWeek = document.querySelector(".sleep-hours-week");
 const averageSleepData = document.querySelector(".average-sleep");
 const numStepsDay = document.querySelector(".num-steps");
 const minsActive = document.querySelector(".mins-active");
@@ -40,8 +41,8 @@ function initializeUserInfo() {
   // displayHydrationWeek();
   displayHydrationToday()
   userLatestHoursSleptAndQuality();
-  displaySleptHoursWeek();
-  displaySleepQualityWeek();
+  // displaySleptHoursWeek();
+  // displaySleepQualityWeek();
   displayAverageSleepForProperty('hoursSlept');
   displayAverageSleepForProperty('sleepQuality');
   displayDailySteps();
@@ -94,17 +95,74 @@ let weekHydrationChart = new Chart(hydrationChart, {
 
   // The data for our dataset
   data: {
-      labels: Object.keys(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22")),
-      datasets: [{
-          label: 'My First dataset',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: Object.values(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22"))
-      }]
+    labels: Object.keys(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22")),
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: Object.values(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22"))
+    }]
   },
 
   // Configuration options go here
   options: {}
+});
+
+let sleepHoursWeekChart = new Chart(sleepHoursWeek, {
+  type: "line",
+  data: {
+    labels: Object.keys(sleepRepo.getUserSleepWeekInfo(activeUser.id, "2019/09/22", "hoursSlept")),
+    datasets: [{
+      label: 'Hours Slept (hrs)',
+      backgroundColor: "rgb(223, 175, 55)",
+      borderColor: "rgb(223, 175, 55)",
+      fill: false,
+      data: Object.values(sleepRepo.getUserSleepWeekInfo(activeUser.id, "2019/09/22", "hoursSlept"))
+    }, {
+      label: "Sleep Quality (rating 1-5)",
+      backgroundColor: "rgb(248, 24, 148)",
+      borderColor: "rgb(248, 24, 148)",
+      fill: false,
+      data: Object.values(sleepRepo.getUserSleepWeekInfo(activeUser.id, "2019/09/22", "sleepQuality"))
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Your week\'s sleep information",
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      labels: {
+        fontColor: "rgb(0, 0, 0)"
+      },
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Value",
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }]
+    }
+  }
 });
 
 function displayHydrationToday() {
@@ -126,23 +184,23 @@ function userLatestHoursSleptAndQuality() {
   latestSleep.innerText = `You slept ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "hoursSlept")} hours last night. You ranked it with a quality of ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "sleepQuality")}.`
 }
 
-function displaySleptHoursWeek() {
-  let week = sleepRepo.getUserSleepWeekInfo(1, "2019/06/21", "hoursSlept");
-  Object.keys(week).forEach(day => {
-    weekSleeps.innerText += `
-      On ${day}, you slept ${week[day]} hours.
-    `
-  });
-}
+// function displaySleptHoursWeek() {
+//   let week = sleepRepo.getUserSleepWeekInfo(1, "2019/06/21", "hoursSlept");
+//   Object.keys(week).forEach(day => {
+//     weekSleeps.innerText += `
+//       On ${day}, you slept ${week[day]} hours.
+//     `
+//   });
+// }
 
-function displaySleepQualityWeek() {
-  let week = sleepRepo.getUserSleepWeekInfo(1, "2019/06/21", "sleepQuality");
-  Object.keys(week).forEach(day => {
-    weekSleeps.innerText += `
-      On ${day}, your sleep quality was ranked ${week[day]}.
-    `
-  });
-}
+// function displaySleepQualityWeek() {
+//   let week = sleepRepo.getUserSleepWeekInfo(1, "2019/06/21", "sleepQuality");
+//   Object.keys(week).forEach(day => {
+//     weekSleeps.innerText += `
+//       On ${day}, your sleep quality was ranked ${week[day]}.
+//     `
+//   });
+// }
 
 // function displayAverageSleepQuality() {
 //   let averageSleepQuality = sleepRepo.getAvgSleepData(activeUser.id, 'sleepQuality');
@@ -159,16 +217,16 @@ function displaySleepQualityWeek() {
 
 //this function is more than 10 lines long but dynamic, replacing the two funcitons above
 function displayAverageSleepForProperty(property) {
-    let averageSleptInfo = sleepRepo.getAvgSleepData(activeUser.id, property);
-    if(property === 'hoursSlept'){
-      averageSleepData.innerText += `
+  let averageSleptInfo = sleepRepo.getAvgSleepData(activeUser.id, property);
+  if (property === 'hoursSlept') {
+    averageSleepData.innerText += `
       Your average hours slept ${averageSleptInfo}!
       `;
-    } else if(property === 'sleepQuality') {
-      averageSleepData.innerText += `
+  } else if (property === 'sleepQuality') {
+    averageSleepData.innerText += `
       Your average sleep quality is ${averageSleptInfo}!
       `;
-    }
+  }
 }
 
 function displayMilesWalked() {
