@@ -2,9 +2,9 @@ class ActivityRepo {
   constructor(activies) {
     this.allActivities = activies;
   }
-  getStepsToday(user, date) {
+  getActivityDay(user, date, property) {
     let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
-    return specificDay.numSteps;
+    return specificDay[property];
   }
   gatherMilesWalked(user, date) {
     let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
