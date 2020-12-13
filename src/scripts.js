@@ -82,7 +82,6 @@ function displayFriends() {
 let stepGoalComparisonChart = new Chart(stepGoalComparison, {
   type: 'bar',
   data: {
-    labels: ["Goals"],
     datasets: [{
       label: "Your Goal",
       backgroundColor: "rgb(255, 131, 0)",
@@ -96,6 +95,7 @@ let stepGoalComparisonChart = new Chart(stepGoalComparison, {
     }]
   },
   options: {
+    maintainAspectRatio: false,
     title: {
       display: true,
       text: "Your daily step goal compared to the average daily step goal",
@@ -123,7 +123,7 @@ let stepGoalComparisonChart = new Chart(stepGoalComparison, {
         display: true,
         scaleLabel: {
           display: true,
-          labelString: "Your step goal",
+          labelString: "Goals",
           fontStyle: 'bold',
           fontColor: "rgb(0, 0, 0)"
         }
@@ -145,6 +145,7 @@ let weekHydrationChart = new Chart(hydrationChart, {
     }]
   },
   options: {
+    maintainAspectRatio: false,
     title: {
       display: true,
       text: "Your week\'s Hydration information",
@@ -209,6 +210,7 @@ let sleepHoursWeekChart = new Chart(sleepHoursWeek, {
     }]
   },
   options: {
+    maintainAspectRatio: false,
     title: {
       display: true,
       text: "Your week\'s Sleep information",
@@ -304,18 +306,57 @@ let dailyStepDisplay = new Chart(dailyStepChart, {
 
   // The data for our dataset
   data: {
-    labels: ['You', 'Average of All Users'],
+    labels: ['Daily Step Counter'],
     datasets: [{
-      label: 'Steps Taken Today',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 255, 255)',
-      fill: false,
-      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "numSteps"), activityRepo.averageAllPropertyForDate("2019/09/22", "numSteps")]
+      label: 'You',
+      backgroundColor: 'rgb(127, 255, 212)',
+      borderColor: 'rgb(127, 255, 212)',
+      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "numSteps")]
+    }, {
+      label: 'Average of All Users',
+      backgroundColor: 'rgb(128, 18, 128)',
+      borderColor: 'rgb(128, 18, 128)',
+      data: [activityRepo.averageAllPropertyForDate("2019/09/22", "numSteps")]
     }]
   },
   // Configuration options go here
   options: {
-    
+    maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: "Steps Taken Today",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Number of steps",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }]
+    }
   }
 });
 
@@ -325,17 +366,52 @@ let dailyStairDisplay = new Chart(dailyStairChart, {
 
   // The data for our dataset
   data: {
-    labels: ['You', 'Average of All Users'],
+    labels: ['Daily Stair Counter'],
     datasets: [{
-      label: 'Flights of Stairs Climbed Today',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 255, 255)',
-      fill: false,
-      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs"), activityRepo.averageAllPropertyForDate("2019/09/22", "flightsOfStairs")]
+      label: 'You',
+      backgroundColor: 'rgb(127, 255, 212)',
+      borderColor: 'rgb(127, 255, 212)',
+      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs")]
+    }, {
+      label: 'Average of All Users',
+      backgroundColor: 'rgb(128, 18, 128)',
+      borderColor: 'rgb(128, 18, 128)',
+      data: [activityRepo.averageAllPropertyForDate("2019/09/22", "flightsOfStairs")]
     }]
   },
   // Configuration options go here
-  options: {}
+  options: {
+    maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: "Flights of Stairs Climbed Today",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Number of steps",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
+      }]
+    }
+  }
 });
 
 let dailyActiveDisplay = new Chart(dailyActiveChart, {
@@ -344,17 +420,52 @@ let dailyActiveDisplay = new Chart(dailyActiveChart, {
 
   // The data for our dataset
   data: {
-    labels: ['You', 'Average of All Users'],
+    labels: ['Daily Minutes Active Counter'],
     datasets: [{
-      label: 'Minutes Active Today',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 255, 255)',
-      fill: false,
-      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive"), activityRepo.averageAllPropertyForDate("2019/09/22", "minutesActive")]
+      label: 'You',
+      backgroundColor: 'rgb(127, 255, 212)',
+      borderColor: 'rgb(127, 255, 212)',
+      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive")]
+    }, {
+      label: 'Average of All Users',
+      backgroundColor: 'rgb(128, 18, 128)',
+      borderColor: 'rgb(128, 18, 128)',
+      data: [activityRepo.averageAllPropertyForDate("2019/09/22", "minutesActive")]
     }]
   },
   // Configuration options go here
-  options: {}
+  options: {
+    maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: "Minutes Active Today",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Number of steps",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
+      }]
+    }
+  }
 });
 
 let stepsWeeklyChart = new Chart(stepsWeeklyView, {
@@ -369,11 +480,13 @@ let stepsWeeklyChart = new Chart(stepsWeeklyView, {
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
+      pointBackgroundColor: 'rgb(255, 255, 255)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/21", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/20", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/19", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/18", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/17", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/16", "numSteps")]
     }]
   },
   // Configuration options go here
   options: {
+    maintainAspectRatio: false,
     title: {
       display: true,
       text: "Your Weekly Steps Taken",
@@ -401,13 +514,6 @@ let stepsWeeklyChart = new Chart(stepsWeeklyView, {
         ticks: {
           fontColor: "rgb(0, 0, 0)",
         },
-        display: true,
-        scaleLabel: {
-          display: true,
-          labelString: "Date",
-          fontStyle: 'bold',
-          fontColor: "rgb(0, 0, 0)"
-        }
       }]
     }
   }
@@ -425,46 +531,49 @@ let stairsWeeklyChart = new Chart(stairsWeeklyView, {
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
+      pointBackgroundColor: 'rgb(255, 255, 255)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/21", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/20", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/19", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/18", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/17", "flightsOfStairs")]
     }]
   },
   // Configuration options go here
-  options: {title: {
-    display: true,
-    text: "Your Weekly Flights of Stairs Climbed",
-    fontSize: 16,
-    fontColor: "rgb(0, 0, 0)"
-  },
-  legend: {
-    display: false
-  },
-  scales: {
-    yAxes: [{
-      ticks: {
-        fontColor: "rgb(0, 0, 0)",
-        beginAtZero: true
-      },
+  options: {
+    maintainAspectRatio: false,
+    title: {
       display: true,
-      scaleLabel: {
+      text: "Your Weekly Flights of Stairs Climbed",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
         display: true,
-        labelString: "Flights of Stairs",
-        fontStyle: 'bold',
-        fontColor: "rgb(0, 0, 0)"
-      }
-    }],
-    xAxes: [{
-      ticks: {
-        fontColor: "rgb(0, 0, 0)",
-      },
-      display: true,
-      scaleLabel: {
+        scaleLabel: {
+          display: true,
+          labelString: "Flights of Stairs",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
         display: true,
-        labelString: "Date",
-        fontStyle: 'bold',
-        fontColor: "rgb(0, 0, 0)"
-      }
-    }]
-  }}
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }]
+    }}
 });
 
 let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
@@ -479,44 +588,47 @@ let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
+      pointBackgroundColor: 'rgb(255, 255, 255)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/21", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/20", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/19", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/18", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/17", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/16", "minutesActive")]
     }]
   },
   // Configuration options go here
-  options: {title: {
-    display: true,
-    text: "Your Weekly Minutes Actvie Taken",
-    fontSize: 16,
-    fontColor: "rgb(0, 0, 0)"
-  },
-  legend: {
-    display: false
-  },
-  scales: {
-    yAxes: [{
-      ticks: {
-        fontColor: "rgb(0, 0, 0)",
-        beginAtZero: true
-      },
+  options: {
+    maintainAspectRatio: false,
+    title: {
       display: true,
-      scaleLabel: {
+      text: "Your Weekly Minutes Actvie Taken",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
         display: true,
-        labelString: "Minutes Active",
-        fontStyle: 'bold',
-        fontColor: "rgb(0, 0, 0)"
-      }
-    }],
-    xAxes: [{
-      ticks: {
-        fontColor: "rgb(0, 0, 0)",
-      },
-      display: true,
-      scaleLabel: {
+        scaleLabel: {
+          display: true,
+          labelString: "Minutes Active",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
         display: true,
-        labelString: "Date",
-        fontStyle: 'bold',
-        fontColor: "rgb(0, 0, 0)"
-      }
-    }]
-  }}
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }]
+    }}
 });
