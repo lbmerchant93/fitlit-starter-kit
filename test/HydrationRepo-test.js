@@ -1,8 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
-
-const Hydration = require('../src/Hydration');
 const HydrationRepo = require('../src/HydrationRepo');
 
 describe('HydrationRepo', function() {
@@ -41,7 +39,7 @@ describe('HydrationRepo', function() {
       '2019/06/19': 4,
       '2019/06/20': 4,
       '2019/06/21': 10
-  });
+    });
     expect(hydrationRepo.retrieveWeekHydration(2, "2019/06/21")).to.deep.equal({
       '2019/06/15': 2,
       '2019/06/16': 5,
@@ -50,7 +48,7 @@ describe('HydrationRepo', function() {
       '2019/06/19': 5,
       '2019/06/20': 5,
       '2019/06/21': 5
-});
+    });
     expect(hydrationRepo.retrieveWeekHydration(5, "2019/06/21")).to.deep.equal({});
   });
 

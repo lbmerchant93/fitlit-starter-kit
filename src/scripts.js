@@ -1,5 +1,4 @@
 //Query Selectors
-
 const userName = document.querySelector(".user-name");
 const userAddress = document.querySelector(".user-address");
 const userEmail = document.querySelector(".user-email");
@@ -7,15 +6,12 @@ const userStrideLength = document.querySelector(".user-stride-length");
 const userDailyStepGoal = document.querySelector(".user-daily-step-goal");
 const displayMessage = document.querySelector(".display-message");
 const stepGoalComparison = document.querySelector(".step-goal-comparison");
-const hydrationWeekDisplay = document.querySelector(".hydration-week");
 const hydrationChart = document.querySelector(".hydration-chart")
 const hydrationTodayDisplay = document.querySelector(".hydration-today");
 const latestSleep = document.querySelector(".latest-sleep");
-const weekSleeps = document.querySelector(".week-sleeps");
-const sleepHoursWeek = document.querySelector(".sleep-week");
-const averageSleepData = document.querySelector(".average-sleep");
-const numStepsDay = document.querySelector(".num-steps");
-const minsActive = document.querySelector(".mins-active");
+const sleepWeek = document.querySelector(".sleep-week");
+const averageSleepHoursData = document.querySelector(".average-sleep-hours");
+const averageSleepQualityData = document.querySelector(".average-sleep-quality");
 const distanceWalked = document.querySelector(".distance-walked");
 const dailyStepChart = document.querySelector(".daily-step-chart");
 const dailyStairChart = document.querySelector(".daily-stair-chart");
@@ -33,7 +29,6 @@ let activeUser = new User(userData[0]);
 let userRepo = new UserRepository(userData);
 let hydration = new Hydration(hydrationData[0]);
 let hydrationRepo = new HydrationRepo(hydrationData);
-let sleep = new Sleep(sleepData[0]);
 let sleepRepo = new SleepRepo(sleepData);
 let activityRepo = new ActivityRepo(activityData);
 
@@ -41,17 +36,12 @@ let activityRepo = new ActivityRepo(activityData);
 function initializeUserInfo() {
   displayUserInfo();
   greetUser();
-  // compareStepGoals();
   displayHydrationToday()
   userLatestHoursSleptAndQuality();
   displayAverageSleepForProperty('hoursSlept');
   displayAverageSleepForProperty('sleepQuality');
-  // displayDailySteps();
-  // displayMinsActiveToday();
   displayMilesWalked();
-  // displayComparisons();
   displayFriends();
-
 }
 
 // User:
@@ -70,15 +60,16 @@ function greetUser() {
 }
 
 function displayFriends() {
-  friendsList.innerText = `${activeUser.friends}`;
+  activeUser.friends.forEach(friendId => {
+    let friendIndex = userData.map(user => user.id).indexOf(friendId);
+    friendsList.innerText += `
+    ${userData[friendIndex].name}
+    Step Goal: ${userData[friendIndex].dailyStepGoal}
+    `;
+  });
 }
 
-
-// function compareStepGoals() {
-//   stepGoalComparison.innerText = `
-//     Your daily step goal = ${activeUser.dailyStepGoal}. The average daily step goal = ${userRepo.averageUserStepGoals()}.
-//   `
-// }
+// Step Goal Comprison:
 let stepGoalComparisonChart = new Chart(stepGoalComparison, {
   type: 'bar',
   data: {
@@ -138,7 +129,7 @@ let weekHydrationChart = new Chart(hydrationChart, {
   data: {
     labels: Object.keys(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22")),
     datasets: [{
-      label: "Day\'s Hydration",
+      label: "Day's Hydration",
       backgroundColor: "rgb(244, 194, 194)",
       borderColor: "rgb(244, 194, 194)",
       data: Object.values(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22"))
@@ -148,7 +139,7 @@ let weekHydrationChart = new Chart(hydrationChart, {
     maintainAspectRatio: false,
     title: {
       display: true,
-      text: "Your week\'s Hydration information",
+      text: "Your week's Hydration information",
       fontSize: 16,
       fontColor: "rgb(0, 0, 0)"
     },
@@ -191,7 +182,7 @@ function displayHydrationToday() {
 }
 
 // Sleep:
-let sleepHoursWeekChart = new Chart(sleepHoursWeek, {
+let sleepHoursWeekChart = new Chart(sleepWeek, {
   type: "line",
   data: {
     labels: Object.keys(sleepRepo.getUserSleepWeekInfo(activeUser.id, "2019/09/22", "hoursSlept")),
@@ -213,7 +204,7 @@ let sleepHoursWeekChart = new Chart(sleepHoursWeek, {
     maintainAspectRatio: false,
     title: {
       display: true,
-      text: "Your week\'s Sleep information",
+      text: "Your week's Sleep information",
       fontSize: 16,
       fontColor: "rgb(0, 0, 0)"
     },
@@ -274,16 +265,11 @@ function userLatestHoursSleptAndQuality() {
 function displayAverageSleepForProperty(property) {
   let averageSleptInfo = sleepRepo.getAvgSleepData(activeUser.id, property);
   if (property === 'hoursSlept') {
-    averageSleepData.innerText += `
-      Your average hours slept ${averageSleptInfo}!
-      `;
+    averageSleepHoursData.innerText += `Your average hours slept ${averageSleptInfo}!`;
   } else if (property === 'sleepQuality') {
-    averageSleepData.innerText += `
-       Your average sleep quality is ${averageSleptInfo}!
-      `;
+    averageSleepQualityData.innerText += `Your average sleep quality is ${averageSleptInfo}!`;
   }
 }
-
 
 // Activity:
 function displayMilesWalked() {
@@ -291,26 +277,14 @@ function displayMilesWalked() {
   distanceWalked.innerText = `You walked ${miles} miles today!`
 }
 
-// function displayComparisons() {
-//   compareToAll.innerText = `You climbed ${activityRepo.gatherStairsClimbed(activeUser, "2019/06/21")} The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "flightsOfStairs")}.
-//   You walked ${activityRepo.getActivityDay(activeUser, "2019/06/21", "numSteps")} The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "numSteps")}
-//   You were active for ${activityRepo.gatherMinutesActive(activeUser, "2019/06/21")} minutes today. The average was ${activityRepo.averageAllPropertyForDate("2019/06/21", "minutesActive")}
-//   `
-// }
-
-
-
 let dailyStepDisplay = new Chart(dailyStepChart, {
-  // The type of chart we want to create
   type: 'bar',
-
-  // The data for our dataset
   data: {
     labels: ['Daily Step Counter'],
     datasets: [{
       label: 'You',
-      backgroundColor: 'rgb(127, 255, 212)',
-      borderColor: 'rgb(127, 255, 212)',
+      backgroundColor: 'rgb(160, 214, 180)',
+      borderColor: 'rgb(160, 214, 180)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "numSteps")]
     }, {
       label: 'Average of All Users',
@@ -319,7 +293,6 @@ let dailyStepDisplay = new Chart(dailyStepChart, {
       data: [activityRepo.averageAllPropertyForDate("2019/09/22", "numSteps")]
     }]
   },
-  // Configuration options go here
   options: {
     maintainAspectRatio: false,
     title: {
@@ -361,16 +334,13 @@ let dailyStepDisplay = new Chart(dailyStepChart, {
 });
 
 let dailyStairDisplay = new Chart(dailyStairChart, {
-  // The type of chart we want to create
   type: 'bar',
-
-  // The data for our dataset
   data: {
     labels: ['Daily Stair Counter'],
     datasets: [{
       label: 'You',
-      backgroundColor: 'rgb(127, 255, 212)',
-      borderColor: 'rgb(127, 255, 212)',
+      backgroundColor: 'rgb(160, 214, 180)',
+      borderColor: 'rgb(160, 214, 180)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs")]
     }, {
       label: 'Average of All Users',
@@ -379,7 +349,6 @@ let dailyStairDisplay = new Chart(dailyStairChart, {
       data: [activityRepo.averageAllPropertyForDate("2019/09/22", "flightsOfStairs")]
     }]
   },
-  // Configuration options go here
   options: {
     maintainAspectRatio: false,
     title: {
@@ -415,16 +384,13 @@ let dailyStairDisplay = new Chart(dailyStairChart, {
 });
 
 let dailyActiveDisplay = new Chart(dailyActiveChart, {
-  // The type of chart we want to create
   type: 'bar',
-
-  // The data for our dataset
   data: {
     labels: ['Daily Minutes Active Counter'],
     datasets: [{
       label: 'You',
-      backgroundColor: 'rgb(127, 255, 212)',
-      borderColor: 'rgb(127, 255, 212)',
+      backgroundColor: 'rgb(160, 214, 180)',
+      borderColor: 'rgb(160, 214, 180)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive")]
     }, {
       label: 'Average of All Users',
@@ -433,7 +399,6 @@ let dailyActiveDisplay = new Chart(dailyActiveChart, {
       data: [activityRepo.averageAllPropertyForDate("2019/09/22", "minutesActive")]
     }]
   },
-  // Configuration options go here
   options: {
     maintainAspectRatio: false,
     title: {
@@ -469,22 +434,18 @@ let dailyActiveDisplay = new Chart(dailyActiveChart, {
 });
 
 let stepsWeeklyChart = new Chart(stepsWeeklyView, {
-  // The type of chart we want to create
   type: 'line',
-
-  // The data for our dataset
   data: {
-    labels: ["2019/09/22", "2019/09/21", "2019/09/20", "2019/09/19", "2019/09/18", "2019/09/17", "2019/09/16"],
+    labels: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.date),
     datasets: [{
       label: 'Steps Taken per Day',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
       pointBackgroundColor: 'rgb(255, 255, 255)',
-      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/21", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/20", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/19", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/18", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/17", "numSteps"), activityRepo.getActivityDay(activeUser, "2019/09/16", "numSteps")]
+      data: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.numSteps)
     }]
   },
-  // Configuration options go here
   options: {
     maintainAspectRatio: false,
     title: {
@@ -520,22 +481,18 @@ let stepsWeeklyChart = new Chart(stepsWeeklyView, {
 });
 
 let stairsWeeklyChart = new Chart(stairsWeeklyView, {
-  // The type of chart we want to create
   type: 'line',
-
-  // The data for our dataset
   data: {
-    labels: ["2019/09/22", "2019/09/21", "2019/09/20", "2019/09/19", "2019/09/18", "2019/09/17", "2019/09/16"],
+    labels: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.date),
     datasets: [{
       label: 'Flights of Stairs Climbed per Day',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
       pointBackgroundColor: 'rgb(255, 255, 255)',
-      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/21", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/20", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/19", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/18", "flightsOfStairs"), activityRepo.getActivityDay(activeUser, "2019/09/17", "flightsOfStairs")]
+      data: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.flightsOfStairs)
     }]
   },
-  // Configuration options go here
   options: {
     maintainAspectRatio: false,
     title: {
@@ -575,24 +532,20 @@ let stairsWeeklyChart = new Chart(stairsWeeklyView, {
       }]
     }}
 });
-
+console.log(activityRepo.getUserWeek(activeUser, "2019/09/22"))
 let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
-  // The type of chart we want to create
   type: 'line',
-
-  // The data for our dataset
   data: {
-    labels: ["2019/09/22", "2019/09/21", "2019/09/20", "2019/09/19", "2019/09/18", "2019/09/17", "2019/09/16"],
+    labels: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.date),
     datasets: [{
       label: 'Minutes Active per Day',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
       pointBackgroundColor: 'rgb(255, 255, 255)',
-      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/21", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/20", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/19", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/18", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/17", "minutesActive"), activityRepo.getActivityDay(activeUser, "2019/09/16", "minutesActive")]
+      data:activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.minutesActive)
     }]
   },
-  // Configuration options go here
   options: {
     maintainAspectRatio: false,
     title: {

@@ -8,7 +8,7 @@ describe('UserRepository', function() {
   let userRepo;
 
   beforeEach(function() {
-    userRepo = new UserRepository(sampleData.sampleUserData);
+    userRepo = new UserRepository(sampleUserData);
   });
 
   it('should be a function', function() {
@@ -54,7 +54,7 @@ describe('UserRepository', function() {
         19
       ]
     });
-    
+
     expect(userRepo.getUserData(4)).to.deep.equal(undefined);
   });
 

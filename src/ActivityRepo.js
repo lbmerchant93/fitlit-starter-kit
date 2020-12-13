@@ -6,6 +6,12 @@ class ActivityRepo {
     let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
     return specificDay[property];
   }
+  getUserWeek(user, date) {
+    let userActivities = this.allActivities.filter(activity => activity.userID === user.id);
+    let desiredDateIndex = userActivities.map(activity => activity.date).indexOf(date);
+    let desiredWeek = userActivities.slice(desiredDateIndex - 6, desiredDateIndex + 1);
+    return desiredWeek;
+  }
   gatherMilesWalked(user, date) {
     let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
     let int = ((user.strideLength * specificDay.numSteps) / 5280).toFixed(1);
