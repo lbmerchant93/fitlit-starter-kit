@@ -314,7 +314,9 @@ let dailyStepDisplay = new Chart(dailyStepChart, {
     }]
   },
   // Configuration options go here
-  options: {}
+  options: {
+    
+  }
 });
 
 let dailyStairDisplay = new Chart(dailyStairChart, {
@@ -363,7 +365,7 @@ let stepsWeeklyChart = new Chart(stepsWeeklyView, {
   data: {
     labels: ["2019/09/22", "2019/09/21", "2019/09/20", "2019/09/19", "2019/09/18", "2019/09/17", "2019/09/16"],
     datasets: [{
-      label: 'My First dataset',
+      label: 'Steps Taken per Day',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
@@ -371,7 +373,44 @@ let stepsWeeklyChart = new Chart(stepsWeeklyView, {
     }]
   },
   // Configuration options go here
-  options: {}
+  options: {
+    title: {
+      display: true,
+      text: "Your Weekly Steps Taken",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Steps Taken",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }]
+    }
+  }
 });
 
 let stairsWeeklyChart = new Chart(stairsWeeklyView, {
@@ -382,7 +421,7 @@ let stairsWeeklyChart = new Chart(stairsWeeklyView, {
   data: {
     labels: ["2019/09/22", "2019/09/21", "2019/09/20", "2019/09/19", "2019/09/18", "2019/09/17", "2019/09/16"],
     datasets: [{
-      label: 'My First dataset',
+      label: 'Flights of Stairs Climbed per Day',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
@@ -390,7 +429,42 @@ let stairsWeeklyChart = new Chart(stairsWeeklyView, {
     }]
   },
   // Configuration options go here
-  options: {}
+  options: {title: {
+    display: true,
+    text: "Your Weekly Flights of Stairs Climbed",
+    fontSize: 16,
+    fontColor: "rgb(0, 0, 0)"
+  },
+  legend: {
+    display: false
+  },
+  scales: {
+    yAxes: [{
+      ticks: {
+        fontColor: "rgb(0, 0, 0)",
+        beginAtZero: true
+      },
+      display: true,
+      scaleLabel: {
+        display: true,
+        labelString: "Flights of Stairs",
+        fontStyle: 'bold',
+        fontColor: "rgb(0, 0, 0)"
+      }
+    }],
+    xAxes: [{
+      ticks: {
+        fontColor: "rgb(0, 0, 0)",
+      },
+      display: true,
+      scaleLabel: {
+        display: true,
+        labelString: "Date",
+        fontStyle: 'bold',
+        fontColor: "rgb(0, 0, 0)"
+      }
+    }]
+  }}
 });
 
 let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
@@ -401,7 +475,7 @@ let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
   data: {
     labels: ["2019/09/22", "2019/09/21", "2019/09/20", "2019/09/19", "2019/09/18", "2019/09/17", "2019/09/16"],
     datasets: [{
-      label: 'My First dataset',
+      label: 'Minutes Active per Day',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
@@ -409,5 +483,40 @@ let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
     }]
   },
   // Configuration options go here
-  options: {}
+  options: {title: {
+    display: true,
+    text: "Your Weekly Minutes Actvie Taken",
+    fontSize: 16,
+    fontColor: "rgb(0, 0, 0)"
+  },
+  legend: {
+    display: false
+  },
+  scales: {
+    yAxes: [{
+      ticks: {
+        fontColor: "rgb(0, 0, 0)",
+        beginAtZero: true
+      },
+      display: true,
+      scaleLabel: {
+        display: true,
+        labelString: "Minutes Active",
+        fontStyle: 'bold',
+        fontColor: "rgb(0, 0, 0)"
+      }
+    }],
+    xAxes: [{
+      ticks: {
+        fontColor: "rgb(0, 0, 0)",
+      },
+      display: true,
+      scaleLabel: {
+        display: true,
+        labelString: "Date",
+        fontStyle: 'bold',
+        fontColor: "rgb(0, 0, 0)"
+      }
+    }]
+  }}
 });
