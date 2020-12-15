@@ -45,4 +45,9 @@ describe('User', function() {
     expect(user1.getFirstName()).to.equal("Luisa");
     expect(user2.getFirstName()).to.equal("Jarvis");
   });
+
+  it('should not take anything but an object as an argument', function() {
+    let user3 = new User([11, 1, 3]);
+    expect(user3.id).to.equal(undefined);
+  });
 });

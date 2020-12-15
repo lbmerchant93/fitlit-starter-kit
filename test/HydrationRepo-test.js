@@ -34,22 +34,22 @@ describe('HydrationRepo', function() {
 
   it('should have a method returning the last 7 fluid ounces consumed per day', function() {
     expect(hydrationRepo.retrieveWeekHydration(1, "2019/06/21")).to.deep.equal({
-  '2019/06/15': 1,
-  '2019/06/16': 4,
-  '2019/06/17': 7,
-  '2019/06/18': 4,
-  '2019/06/19': 4,
-  '2019/06/20': 4,
-  '2019/06/21': 10
-});
+      '2019/06/15': 1,
+      '2019/06/16': 4,
+      '2019/06/17': 7,
+      '2019/06/18': 4,
+      '2019/06/19': 4,
+      '2019/06/20': 4,
+      '2019/06/21': 10
+  });
     expect(hydrationRepo.retrieveWeekHydration(2, "2019/06/21")).to.deep.equal({
-  '2019/06/15': 2,
-  '2019/06/16': 5,
-  '2019/06/17': 8,
-  '2019/06/18': 5,
-  '2019/06/19': 5,
-  '2019/06/20': 5,
-  '2019/06/21': 5
+      '2019/06/15': 2,
+      '2019/06/16': 5,
+      '2019/06/17': 8,
+      '2019/06/18': 5,
+      '2019/06/19': 5,
+      '2019/06/20': 5,
+      '2019/06/21': 5
 });
     expect(hydrationRepo.retrieveWeekHydration(5, "2019/06/21")).to.deep.equal({});
   });
