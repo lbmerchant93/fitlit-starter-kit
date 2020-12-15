@@ -17,18 +17,8 @@ class ActivityRepo {
     let int = ((user.strideLength * specificDay.numSteps) / 5280).toFixed(1);
     return parseFloat(int);
   }
-  gatherMinutesActive(user, date) {
-    let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
-    return specificDay.minutesActive;
-  }
-  gatherStairsClimbed(user, date) {
-    let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
-    return specificDay.flightsOfStairs;
-  }
   calcAverageMinActiveForAWeek(user, date) {
-    let userActivities = this.allActivities.filter(activity => activity.userID === user.id);
-    let desiredDateIndex = userActivities.map(activity => activity.date).indexOf(date);
-    let desiredWeek = userActivities.slice(desiredDateIndex - 6, desiredDateIndex + 1);
+    let desiredWeek = this.getUserWeek(user, date);
     let totalTimeActive = desiredWeek.reduce((totalMin, activity) => {
       totalMin += activity.minutesActive;
       return totalMin;

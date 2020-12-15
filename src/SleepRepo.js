@@ -37,7 +37,7 @@ class SleepRepo {
     return parseFloat((sumAllSleeps / this.allSleeps.length).toFixed(1));
   }
 
-  checkUserOverThree(date, id) {
+  averageQualityForAWeek(date, id) {
     let userSleeps = this.allSleeps.filter(sleep => sleep.userID === id);
     let desiredDateIndex = userSleeps.map(sleep => sleep.date).indexOf(date);
     let desiredWeek = userSleeps.slice(desiredDateIndex - 6, desiredDateIndex + 1);
@@ -49,16 +49,15 @@ class SleepRepo {
 
   }
 
-  findAllUsersOverThree(userRepo, date) {
-    let restedUsers = userRepo.allUsers.filter(user => {
-      let userAvg = this.checkUserOverThree(date, user.id);
+  findAllUsersQualityOverThree(userRepo, date) {
+    let restedUsers = userRepo.users.filter(user => {
+      let userAvg = this.averageQualityForAWeek(date, user.id);
       if (userAvg > 3) {
         return user.id;
       }
     })
     return restedUsers.map(user => user.id)
   }
-
 
   findMostRestedUsers(date) {
     let desiredDay = this.allSleeps.filter(sleep => sleep.date === date);

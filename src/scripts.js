@@ -4,7 +4,7 @@ const userAddress = document.querySelector(".user-address");
 const userEmail = document.querySelector(".user-email");
 const userStrideLength = document.querySelector(".user-stride-length");
 const userDailyStepGoal = document.querySelector(".user-daily-step-goal");
-const displayMessage = document.querySelector(".display-message");
+const displayWelcomeMessage = document.querySelector(".display-message");
 const stepGoalComparison = document.querySelector(".step-goal-comparison");
 const hydrationChart = document.querySelector(".hydration-chart")
 const hydrationTodayDisplay = document.querySelector(".hydration-today");
@@ -25,7 +25,7 @@ const friendsList = document.querySelector(".friends-list");
 window.addEventListener("load", initializeUserInfo);
 
 //Global Variables
-let activeUser = new User(userData[0]);
+let activeUser = new User(userData[getRandomIndex(userData)]);
 let userRepo = new UserRepository(userData);
 let hydration = new Hydration(hydrationData[0]);
 let hydrationRepo = new HydrationRepo(hydrationData);
@@ -45,6 +45,10 @@ function initializeUserInfo() {
 }
 
 // User:
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
 function displayUserInfo() {
   userName.innerText = `Name: \n${activeUser.name}`;
   userAddress.innerText = `Address: \n${activeUser.address}`;
@@ -54,7 +58,7 @@ function displayUserInfo() {
 }
 
 function greetUser() {
-  displayMessage.innerText = `
+  displayWelcomeMessage.innerText = `
     Welcome to FitBook, ${activeUser.getFirstName()}!
   `;
 }
@@ -89,7 +93,7 @@ let stepGoalComparisonChart = new Chart(stepGoalComparison, {
     maintainAspectRatio: false,
     title: {
       display: true,
-      text: "Your daily step goal compared to the average daily step goal",
+      text: "Your daily step goal compared to the average of all users",
       fontSize: 16,
       fontColor: "rgb(0, 0, 0)"
     },
@@ -532,7 +536,7 @@ let stairsWeeklyChart = new Chart(stairsWeeklyView, {
       }]
     }}
 });
-console.log(activityRepo.getUserWeek(activeUser, "2019/09/22"))
+
 let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
   type: 'line',
   data: {
@@ -543,7 +547,7 @@ let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
       borderColor: 'rgb(255, 255, 255)',
       fill: false,
       pointBackgroundColor: 'rgb(255, 255, 255)',
-      data:activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.minutesActive)
+      data: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.minutesActive)
     }]
   },
   options: {

@@ -13,10 +13,6 @@ describe('Sleep', function() {
     sleep2 = new Sleep(sampleData.sampleSleep[1]);
   });
 
-  it('should be an instance of Sleep', function() {
-    expect(sleep1).to.be.an.instanceOf(Sleep);
-  });
-
   it('should take an object as an arguement', function() {
     expect(sleep1.userID).to.equal(1);
     expect(sleep1.date).to.equal("2019/06/15");
@@ -33,5 +29,11 @@ describe('Sleep', function() {
   it('should not take anything but an object as an argument', function() {
     let sleep3 = new Sleep([15, 16, 3]);
     expect(sleep3.userID).to.equal(undefined);
+    expect(sleep2).to.deep.equal({
+      "userID": 2,
+      "date": "2019/06/15",
+      "hoursSlept": 7,
+      "sleepQuality": 4.7
+    })
   });
 });

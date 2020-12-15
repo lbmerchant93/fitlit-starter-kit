@@ -14,20 +14,17 @@ describe('HydrationRepo', function() {
     expect(HydrationRepo).to.be.a('function');
   });
 
-  it('should instantiate a HydrationRepo', function() {
-    expect(hydrationRepo).to.be.an.instanceof(HydrationRepo);
-  });
-
   it('should hold all the Hydration objects', function() {
     expect(hydrationRepo.allHydrations).to.be.an('array');
     expect(hydrationRepo.allHydrations[0].numOunces).to.equal(1);
     expect(hydrationRepo.allHydrations[1].numOunces).to.equal(2);
+    expect(hydrationRepo.allHydrations.length).to.equal(17);
   });
 
 
   it('should have a method returning the average fluid ounces consumed per day for all time', function() {
-    expect(hydrationRepo.userLifetime(1)).to.equal(4);
-    expect(hydrationRepo.userLifetime(2)).to.equal(5);
+    expect(hydrationRepo.calcUserLifetimeHydration(1)).to.equal(4.9);
+    expect(hydrationRepo.calcUserLifetimeHydration(2)).to.equal(5);
   });
 
   it('should have a method returning the last 7 fluid ounces consumed per day', function() {

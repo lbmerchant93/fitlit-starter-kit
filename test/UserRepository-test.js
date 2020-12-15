@@ -15,14 +15,11 @@ describe('UserRepository', function() {
     expect(UserRepository).to.be.a('function');
   });
 
-  it('should instantiate a UserRepository', function() {
-    expect(userRepo).to.be.an.instanceof(UserRepository);
-  });
-
   it('should hold all the user objects', function() {
-    expect(userRepo.allUsers).to.be.a('array');
-    expect(userRepo.allUsers[0].name).to.equal("Luisa Hane");
-    expect(userRepo.allUsers[1].name).to.equal("Jarvis Considine");
+    expect(userRepo.users).to.be.a('array');
+    expect(userRepo.users[0].name).to.equal("Luisa Hane");
+    expect(userRepo.users[1].name).to.equal("Jarvis Considine");
+    expect(userRepo.users.length).to.equal(3);
   });
 
   it('should be able to return user data given the ID', function() {

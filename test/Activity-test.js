@@ -30,4 +30,16 @@ describe('Activity', function() {
     expect(activity2.flightsOfStairs).to.equal(10);
   });
 
+  it('should not take anything but an object as an argument', function() {
+    let activity3 = new Activity([7, 9]);
+    expect(activity3.userID).to.equal(undefined);
+    expect(activity2).to.deep.equal({
+      "userID": 2,
+      "date": "2019/06/15",
+      "numSteps": 4294,
+      "minutesActive": 138,
+      "flightsOfStairs": 10
+    })
+  });
+
 });
