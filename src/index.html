@@ -1,16 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Activity Tracker</title>
-  </head>
-  <body>
-    <h1>Activity Tracker</h1>
+<html lang="en">
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/hydration.js"></script>
-    <script type="text/javascript" src="../data/sleep.js"></script>
-    <script type="text/javascript" src="../data/activity.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Activity Tracker</title>
+  <meta name="authors" content="Lucas Merchant & Matthew Dean">
+  <meta name="description" content="FitLit Project">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+
+<body>
+  <header>
+    <img class="logo" />
+    <h1>Activity Tracker</h1>
+    <img class="logo" />
+  </header>
+  <nav class="nav-bar">
+    <h2 class="display-message"></h2>
+    <article class="user-info">
+      user info
+    </article>
+    <article class="friend-info">
+      friend info
+    </article>
+  </nav>
+  <main class="stats">
+    <article class="sleep">
+      <header>Sleep</header>
+      <p>sleep</p>
+    </article>
+    <article class="hydration">
+      <header>Hydration</header>
+      <p class="hydration-week">
+
+      </p>
+      <p class="hydration-today">
+
+      </p>
+    </article>
+    <article class="activity">
+      <header>Activity</header>
+      <p>activity</p>
+    </article>
+    <article class="steps">
+      <header>Step Comparison</header>
+      <p class="step-goal-comparison">step goal comparison</p>
+    </article>
+  </main>
+
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/hydration.js"></script>
+  <script type="text/javascript" src="../data/sleep.js"></script>
+  <script type="text/javascript" src="../data/activity.js"></script>
+  <script type="text/javascript" src="../test/sampleData.js"></script>
+  <script type="text/javascript" src="./User.js"></script>
+  <script type="text/javascript" src="./UserRepository.js"></script>
+  <script type="text/javascript" src="./Hydration.js"></script>
+  <script type="text/javascript" src="./HydrationRepo.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+
+</body>
+
 </html>
