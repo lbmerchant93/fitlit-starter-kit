@@ -16,67 +16,68 @@
     <h1 class="site-title">F i t B o o k</h1>
     <img class="logo" />
   </header>
-  <nav class="nav-bar">
-    <h2 class="display-message"></h2>
-    <article class="user-info">
-      <p class="user-name"></p>
-      <p class="user-address"></p>
-      <p class="user-email"></p>
-      <p class="user-stride-length"></p>
-      <p class="user-daily-step-goal"></p>
-    </article>
-    <article class="user-tracking">
-      <article class="sleep card">
-        <p class="latest-sleep"></p>
+  <section class="content-wrapper">
+    <nav class="nav-bar">
+      <h2 class="display-message"></h2>
+      <article class="user-info">
+        <p class="user-name"></p>
+        <p class="user-address"></p>
+        <p class="user-email"></p>
+        <p class="user-stride-length"></p>
+        <p class="user-daily-step-goal"></p>
       </article>
-      <article class="sleep card">
-        <p class="average-sleep-hours"></p>
+      <article class="user-tracking">
+        <article class="sleep card">
+          <p class="latest-sleep"></p>
+        </article>
+        <article class="sleep card">
+          <p class="average-sleep-hours"></p>
+        </article>
+        <article class="sleep card">
+          <p class="average-sleep-quality"></p>
+        </article>
+        <article class="hydration card">
+          <p class="hydration-today"></p>
+        </article>
+        <article class="activity card">
+          <p class="distance-walked"></p>
+        </article>
       </article>
-      <article class="sleep card">
-        <p class="average-sleep-quality"></p>
+      <article class="friend-info card">
+        <h2 class="friends-header">Friends</h2>
+        <p class="friends-list"></p>
       </article>
-      <article class="hydration card">
-        <p class="hydration-today"></p>
+    </nav>
+    <main class="stats">
+      <article class="sleep card chart">
+        <canvas class="sleep-week" width="1" height="1"></canvas>
       </article>
-      <article class="activity card">
-        <p class="distance-walked"></p>
+      <article class="hydration card chart">
+        <canvas class="hydration-chart" width="1" height="1"></canvas>
       </article>
-    </article>
-    <article class="friend-info card">
-      <h2 class="friends-header">Friends</h2>
-      <p class="friends-list"></p>
-    </article>
-  </nav>
-  <main class="stats">
-    <article class="sleep card chart">
-      <canvas class="sleep-week" width="1" height="1"></canvas>
-    </article>
-    <article class="hydration card chart">
-      <canvas class="hydration-chart" width="1" height="1"></canvas>
-    </article>
-    <article class="activity card chart daily">
-      <canvas class="daily-step-chart"></canvas>
-    </article>
-    <article class="activity card chart daily">
-      <canvas class="daily-stair-chart"></canvas>
-    </article>
-    <article class="activity card chart daily">
-      <canvas class="daily-active-chart"></canvas>
-    </article>
-    <article class="activity card chart">
-      <canvas class="steps-weekly-view"></canvas>
-    </article>
-    <article class="activity card chart">
-      <canvas class="stairs-weekly-view"></canvas>
-    </article>
-    <article class="activity card chart">
-      <canvas class="minutes-active-weekly-view"></canvas>
-    </article>
-    <article class="steps card chart">
-      <canvas class="step-goal-comparison" width="1" height="1"></canvas>
-    </article>
-  </main>
-
+      <article class="activity card chart daily">
+        <canvas class="daily-step-chart"></canvas>
+      </article>
+      <article class="activity card chart daily">
+        <canvas class="daily-stair-chart"></canvas>
+      </article>
+      <article class="activity card chart daily">
+        <canvas class="daily-active-chart"></canvas>
+      </article>
+      <article class="activity card chart">
+        <canvas class="steps-weekly-view"></canvas>
+      </article>
+      <article class="activity card chart">
+        <canvas class="stairs-weekly-view"></canvas>
+      </article>
+      <article class="activity card chart">
+        <canvas class="minutes-active-weekly-view"></canvas>
+      </article>
+      <article class="steps card chart">
+        <canvas class="step-goal-comparison" width="1" height="1"></canvas>
+      </article>
+    </main>
+  </section>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>
