@@ -4,6 +4,7 @@ const userAddress = document.querySelector(".user-address");
 const userEmail = document.querySelector(".user-email");
 const userStrideLength = document.querySelector(".user-stride-length");
 const userDailyStepGoal = document.querySelector(".user-daily-step-goal");
+const userInfoButton = document.querySelector(".user-info-button");
 const displayWelcomeMessage = document.querySelector(".display-message");
 const stepGoalComparison = document.querySelector(".step-goal-comparison");
 const hydrationChart = document.querySelector(".hydration-chart")
@@ -23,6 +24,7 @@ const friendsList = document.querySelector(".friends-list");
 
 //Event Listeners
 window.addEventListener("load", initializeUserInfo);
+userInfoButton.addEventListener("click", toggleUserInfo);
 
 //Global Variables
 let activeUser = new User(userData[getRandomIndex(userData)]);
@@ -71,6 +73,17 @@ function displayFriends() {
     Step Goal: ${userData[friendIndex].dailyStepGoal}
     `;
   });
+}
+
+function toggleUserInfo() {
+  if (userInfoButton.innerText === "Show More") {
+    userInfoButton.innerText = "Show Less";
+  } else {
+    userInfoButton.innerText = "Show More";
+  }
+  userAddress.classList.toggle('hidden');
+  userEmail.classList.toggle('hidden');
+  userStrideLength.classList.toggle('hidden');
 }
 
 // Step Goal Comprison:
@@ -589,3 +602,5 @@ let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
       }]
     }}
 });
+
+
