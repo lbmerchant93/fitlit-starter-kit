@@ -9,8 +9,10 @@ body {
 body {
   display: grid;
   grid-template-rows: 1fr 5fr;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 3fr;
   text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial', Arial, sans-serif;
+  background-image: linear-gradient(rgb(211, 235, 243), rgb(124, 203, 255));
 }
 
 header {
@@ -37,7 +39,28 @@ main {
 }
 
 article {
-  border: 3px solid pink;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 40px;
+  border: 1px solid black;
+  box-shadow: 5px 5px black;
+}
+
+
+.sleep {
+ background-color: rgb(131, 57, 195);
+}
+
+.hydration {
+  background-color: rgb(31, 171, 232);
+}
+
+.activity {
+  background-color: rgb(82, 213, 119);
+}
+
+.steps {
+  background-color: rgb(232, 208, 110);
 }
 
 /* */
