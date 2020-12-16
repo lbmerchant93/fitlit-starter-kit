@@ -143,6 +143,16 @@ main {
   background-color: rgb(253, 48, 255);
 }
 
+.sleep-icon,
+.hydration-icon,
+.activity-icon,
+.steps-icon {
+  min-width: 15px;
+  min-height: 15px;
+  max-width: 15px;
+  max-height: 15px;
+}
+
 
 /* Media Queries */
 
