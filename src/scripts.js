@@ -264,21 +264,6 @@ function userLatestHoursSleptAndQuality() {
   latestSleep.innerText = `You slept ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "hoursSlept")} hours last night and ranked it with a quality of ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "sleepQuality")}.`
 }
 
-
-
-// function displayAverageSleepQuality() {
-//   let averageSleepQuality = sleepRepo.getAvgSleepData(activeUser.id, 'sleepQuality');
-//   averageSleepData.innerText += `Your average sleep quality is ${averageSleepQuality}!`;
-// }
-//
-// function displayAverageSleptHours() {
-//   let averageSleptHours = sleepRepo.getAvgSleepData(activeUser.id, 'hoursSlept');
-//   averageSleepData.innerText += `
-//   Your average hours slept is ${averageSleptHours}!
-//   `;
-// }
-
-//this function is more than 10 lines long but dynamic, replacing the two funcitons above
 function displayAverageSleepForProperty(property) {
   let averageSleptInfo = sleepRepo.getAvgSleepData(activeUser.id, property);
   if (property === 'hoursSlept') {
@@ -300,8 +285,8 @@ let dailyStepDisplay = new Chart(dailyStepChart, {
     labels: ['Daily Step Counter'],
     datasets: [{
       label: 'You',
-      backgroundColor: 'rgb(160, 214, 180)',
-      borderColor: 'rgb(160, 214, 180)',
+      backgroundColor: 'rgb(253, 200, 48)',
+      borderColor: 'rgb(253, 200, 48)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "numSteps")]
     }, {
       label: 'Average of All Users',
@@ -356,8 +341,8 @@ let dailyStairDisplay = new Chart(dailyStairChart, {
     labels: ['Daily Stair Counter'],
     datasets: [{
       label: 'You',
-      backgroundColor: 'rgb(160, 214, 180)',
-      borderColor: 'rgb(160, 214, 180)',
+      backgroundColor: 'rgb(253, 200, 48)',
+      borderColor: 'rgb(253, 200, 48)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "flightsOfStairs")]
     }, {
       label: 'Average of All Users',
@@ -406,8 +391,8 @@ let dailyActiveDisplay = new Chart(dailyActiveChart, {
     labels: ['Daily Minutes Active Counter'],
     datasets: [{
       label: 'You',
-      backgroundColor: 'rgb(160, 214, 180)',
-      borderColor: 'rgb(160, 214, 180)',
+      backgroundColor: 'rgb(253, 200, 48)',
+      borderColor: 'rgb(253, 200, 48)',
       data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive")]
     }, {
       label: 'Average of All Users',
@@ -602,5 +587,3 @@ let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
       }]
     }}
 });
-
-
