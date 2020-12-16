@@ -78,13 +78,24 @@ function displayFriends() {
 function toggleUserInfo() {
   if (userInfoButton.innerText === "Show More") {
     userInfoButton.innerText = "Show Less";
+    userInfoButton.setAttribute('aria-expanded', 'true');
+    userInfoButton.setAttribute(
+      'aria-label', 
+      'Show Less User Info'
+    );
   } else {
     userInfoButton.innerText = "Show More";
+    userInfoButton.setAttribute('aria-expanded', 'false');
+    userInfoButton.setAttribute(
+      'aria-label', 
+      'Show More User Info'
+    );
   }
   userAddress.classList.toggle('hidden');
   userEmail.classList.toggle('hidden');
   userStrideLength.classList.toggle('hidden');
 }
+
 
 // Step Goal Comprison:
 let stepGoalComparisonChart = new Chart(stepGoalComparison, {
