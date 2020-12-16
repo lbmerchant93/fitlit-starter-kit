@@ -1,82 +1,134 @@
-# FitLit Starter Kit
+# FitBook
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+* [About the Project](#about-the-project)
+* [Lanugages Used](#languages-used)
+* [Getting Started](#getting-started)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
 
-## Setup
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `open src/index.html` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-## Testing
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+FitBook is a fitness application designed to be used with various devices. The repository demonstrates:
+  * expanded implementation of ES6 (syntax and prototype methods)
+  * SRP and DRY code
+  * accounting for multiple device sizes by utilizing responsive layout/design
+  * adherance to Test Driven Development
+  * considerations for accesibility
+  * usage of third party libraries (Chart.js) to display data
 
-## Linting Your Code
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+### Languages Used
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+* HTML
+* CSS
+* JavaScript
 
-## Data Model
 
-**Users**
+<!-- GETTING STARTED -->
+## Getting Started
 
+To get a local copy up and running follow these simple example steps.
+
+
+### Prerequisites
+
+
+### Installation
+
+1. Clone the repo
+```sh
+https://github.com/lbmerchant93/fitlit-starter-kit
 ```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
+2. Install NPM packages
+```sh
+npm install
 ```
+3. Move into fitlit-starter-kit repo
 
-**Activity**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
+4. Open web page
+```sh
+open src/index.html
 ```
 
-**Sleep**
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+## Usage
+
+### Users are able to see their stored data in graph representation
+
+  * On click, edit DOM to display current players game piece
+  * Switch DOM elements to represent whos turn it is
+  * Update player instances to "hold" game placements
+![Game Placements](https://i.imgur.com/Mz6MCBL.png)
+
+
+
+### Users are able to see their info as well as their friends daily step goal
+  
+
+  * Adds win to player instance using incremental win counter
+  * Updates player wins to local storage
+  * Displays winner on page
+  * Resets board after timeout
+![Win Counter](https://i.imgur.com/BQ0zDns.png)
+
+
+
+### Users can open the app on multiple devices
+
+  * Checks turn counter and returns a draw if the board is full
+  * Edits DOM elements to show a draw was reached, does not add wins to either player
+  * Resets board after timeout
+![Draw Alert](https://i.imgur.com/5P0xHly.png)
+  
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+See the [open issues](file:///Users/matthewdean/turing/2module/projects/fitlit-starter-kit/issues) for a list of proposed features (and known issues).
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature-amazing-feature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature-amazing-feature`)
+5. Open a Pull Request
+
+
+<!-- CONTACT -->
+## Contact
+
+
+
+
+
+[Lucas Merchant](NEED LUCAS EMAIL)
+
+
+
+
+
+[Matthew Dean](deanma95@gmail.com)
+
+Project Link: [https://github.com/mattdeann/tictactoe](https://github.com/lbmerchant93/fitlit-starter-kit)
+
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
+
+  * Travis Rollins - Project Manager
