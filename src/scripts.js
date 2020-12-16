@@ -121,6 +121,11 @@ let stepGoalComparisonChart = new Chart(stepGoalComparison, {
       fontSize: 16,
       fontColor: "rgb(0, 0, 0)"
     },
+    legend: {
+      labels: {
+        fontColor: "rgb(0, 0, 0)"
+      }
+    },
     scales: {
       yAxes: [{
         ticks: {
@@ -334,6 +339,7 @@ let dailyStepDisplay = new Chart(dailyStepChart, {
       xAxes: [{
         ticks: {
           fontColor: "rgb(0, 0, 0)",
+          fontStyle: 'bold',
         },
         display: true,
         scaleLabel: {
@@ -390,6 +396,7 @@ let dailyStairDisplay = new Chart(dailyStairChart, {
       xAxes: [{
         ticks: {
           fontColor: "rgb(0, 0, 0)",
+          fontStyle: 'bold',
         },
       }]
     }
@@ -404,7 +411,8 @@ let dailyActiveDisplay = new Chart(dailyActiveChart, {
       label: 'You',
       backgroundColor: 'rgb(253, 200, 48)',
       borderColor: 'rgb(253, 200, 48)',
-      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive")]
+      data: [activityRepo.getActivityDay(activeUser, "2019/09/22", "minutesActive")],
+      fontStyle: 'bold',
     }, {
       label: 'Average of All Users',
       backgroundColor: 'rgb(128, 18, 128)',
@@ -440,6 +448,7 @@ let dailyActiveDisplay = new Chart(dailyActiveChart, {
       xAxes: [{
         ticks: {
           fontColor: "rgb(0, 0, 0)",
+          fontStyle: 'bold',
         },
       }]
     }
@@ -487,7 +496,14 @@ let stepsWeeklyChart = new Chart(stepsWeeklyView, {
       xAxes: [{
         ticks: {
           fontColor: "rgb(0, 0, 0)",
+          fontStyle: 'bold',
         },
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
       }]
     }
   }
@@ -534,6 +550,7 @@ let stairsWeeklyChart = new Chart(stairsWeeklyView, {
       xAxes: [{
         ticks: {
           fontColor: "rgb(0, 0, 0)",
+          fontStyle: 'bold',
         },
         display: true,
         scaleLabel: {
@@ -587,6 +604,7 @@ let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
       xAxes: [{
         ticks: {
           fontColor: "rgb(0, 0, 0)",
+          fontStyle: 'bold',
         },
         display: true,
         scaleLabel: {

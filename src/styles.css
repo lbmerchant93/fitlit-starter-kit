@@ -133,8 +133,15 @@ main {
 }
 
 .chart {
+  display: block;
   min-height: 17em;
   min-width: 50vw;
+  max-height: 280px;
+}
+
+canvas {
+  max-height: 85% !important;
+  width: 100% !important;
 }
 
 .sleep {
@@ -151,6 +158,16 @@ main {
 
 .steps {
   background-color: rgb(253, 48, 255);
+}
+
+.sleep-icon,
+.hydration-icon,
+.activity-icon,
+.steps-icon {
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
 }
 
 
@@ -231,7 +248,14 @@ main {
   }
 
   .chart {
+    display: block;
     min-height: 17em;
+    max-height: 280px;
+  }
+
+  canvas {
+    max-height: 85% !important;
+    width: 100% !important;
   }
 }
 
@@ -357,8 +381,15 @@ main {
   }
 
   .chart {
+    display: block;
     min-height: 17em;
     min-width: 50vw;
+    max-height: 280px;
+  }
+
+  canvas {
+    max-height: 85% !important;
+    width: 100% !important;
   }
 
   .sleep {
@@ -474,9 +505,15 @@ main {
   }
 
   .chart {
+    display: block;
     min-height: 17em;
-    max-height: 300px;
+    max-height: 280px;
     min-width: 20vw;
+  }
+
+  canvas {
+    max-height: 85% !important;
+    width: 100% !important;
   }
 }
 
