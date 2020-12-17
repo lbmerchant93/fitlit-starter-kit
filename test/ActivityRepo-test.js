@@ -119,4 +119,11 @@ describe('ActivityRepo', function() {
     expect(activityRepo.averageAllPropertyForDate("2019/06/16", "minutesActive")).to.equal(182.3);
   });
 
+  it('should find the latest step streak where each day increase the number of steps', function() {
+    expect(activityRepo.getStepStreak(user1)).to.deep.equal([
+      "2019/06/18",
+      "2019/06/19",
+      "2019/06/20"
+    ]);
+  });
 });

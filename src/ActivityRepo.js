@@ -53,6 +53,28 @@ class ActivityRepo {
     }, 0);
     return parseFloat((sumActive / desiredDay.length).toFixed(1));
   }
+  getStepStreak(user) {
+    let userActivities = this.allActivities.filter(activity => activity.userID === user.id);
+    let arr = [];
+    let allStreaks = userActivities.reduce((streaks, day, index) => {
+      if (index === 0) {
+        arr.push(day.date);
+        return streaks
+      }
+      if (userActivities[index - 1].numSteps < day.numSteps) {
+        arr.push(day.date);
+        if (arr.length >= 3) {
+          streaks[arr[0]] = arr;
+        }
+      } else {
+        arr = [];
+        arr.push(day.date);
+      }
+      return streaks;
+    }, {});
+    let last = allStreaks[Object.keys(allStreaks)[Object.keys(allStreaks).length - 1]];
+    return last
+  }
 }
 
 if (typeof module !== 'undefined') {

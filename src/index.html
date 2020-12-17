@@ -14,67 +14,85 @@
   <header class="main-header">
     <img src="../clipart4222500.png" alt="FitLit Logo" class="logo">
     <h1 class="site-title">F i t B o o k</h1>
-    <img class="logo" />
   </header>
   <section class="content-wrapper">
     <nav class="nav-bar">
       <h2 class="display-message"></h2>
       <article class="user-info">
+        <button class="user-info-button" aria-expanded="false" aria-controls="sidebar-menu" aria-label="Open sidebar navigation menu" alt="User Info Button">Show Less</button>
         <p class="user-name"></p>
         <p class="user-address"></p>
         <p class="user-email"></p>
         <p class="user-stride-length"></p>
         <p class="user-daily-step-goal"></p>
       </article>
-      <article class="user-tracking">
-        <article class="sleep card">
-          <p class="latest-sleep"></p>
-        </article>
-        <article class="sleep card">
-          <p class="average-sleep-hours"></p>
-        </article>
-        <article class="sleep card">
-          <p class="average-sleep-quality"></p>
-        </article>
-        <article class="hydration card">
-          <p class="hydration-today"></p>
-        </article>
-        <article class="activity card">
-          <p class="distance-walked"></p>
-        </article>
-      </article>
       <article class="friend-info card">
         <h2 class="friends-header">Friends</h2>
         <p class="friends-list"></p>
       </article>
+      <article class="user-tracking">
+        <article class="sleep card">
+          <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <p class="latest-sleep"></p>
+        </article>
+        <article class="sleep card">
+          <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <p class="average-sleep-hours"></p>
+        </article>
+        <article class="sleep card">
+          <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <p class="average-sleep-quality"></p>
+        </article>
+        <article class="hydration card">
+          <img class="hydration-icon" src="../images/hydration-icon.png" alt="hydration-icon">
+          <p class="hydration-today"></p>
+        </article>
+        <article class="activity card">
+          <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+          <p class="distance-walked"></p>
+        </article>
+      </article>
     </nav>
     <main class="stats">
       <article class="sleep card chart">
-        <canvas class="sleep-week" width="1" height="1"></canvas>
+        <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <canvas class="sleep-week"></canvas>
       </article>
       <article class="hydration card chart">
-        <canvas class="hydration-chart" width="1" height="1"></canvas>
+        <img class="hydration-icon" src="../images/hydration-icon.png" alt="hydration-icon">
+        <canvas class="hydration-chart"></canvas>
       </article>
       <article class="activity card chart daily">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
         <canvas class="daily-step-chart"></canvas>
       </article>
       <article class="activity card chart daily">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
         <canvas class="daily-stair-chart"></canvas>
       </article>
       <article class="activity card chart daily">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
         <canvas class="daily-active-chart"></canvas>
       </article>
       <article class="activity card chart">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
         <canvas class="steps-weekly-view"></canvas>
       </article>
       <article class="activity card chart">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
         <canvas class="stairs-weekly-view"></canvas>
       </article>
       <article class="activity card chart">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
         <canvas class="minutes-active-weekly-view"></canvas>
       </article>
+      <article class="steps streak card chart">
+        <img class="steps-icon" src="../images/steps-icon.png" alt="steps-icon">
+        <canvas class="last-step-streak"></canvas>
+      </article>
       <article class="steps card chart">
-        <canvas class="step-goal-comparison" width="1" height="1"></canvas>
+        <img class="steps-icon" src="../images/steps-icon.png" alt="steps-icon">
+        <canvas class="step-goal-comparison"></canvas>
       </article>
     </main>
   </section>
