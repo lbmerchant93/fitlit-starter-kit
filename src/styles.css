@@ -24,15 +24,15 @@ body {
   grid-column: 1 / -1;
   font-size: 1.5rem;
   display: grid;
-  grid-template-columns: 1fr 11fr;
+  grid-template-columns: auto auto;
   height: 10vh;
-  min-height: 150px;
+  min-height: 30px;
 }
 
 .logo {
   grid-column: 1 / 2;
   margin: 10px;
-  max-height: 4em;
+  max-height: 3em;
 }
 
 .site-title {
@@ -56,7 +56,8 @@ nav {
 h2 {
   grid-row: 1 / 2;
   grid-column: 1 / -1;
-  font-size: 1.5rem;
+
+  font-size: 1.2rem;
   font-weight: lighter;
 }
 
@@ -133,8 +134,15 @@ main {
 }
 
 .chart {
+  display: block;
   min-height: 17em;
   min-width: 50vw;
+  max-height: 280px;
+}
+
+canvas {
+  max-height: 85% !important;
+  width: 100% !important;
 }
 
 .sleep {
@@ -153,14 +161,22 @@ main {
   background-color: rgb(253, 48, 255);
 }
 
+.streak{
+  font-size: 1.0rem;
+  font-weight: lighter;
+  min-height: auto;
+}
+
 .sleep-icon,
 .hydration-icon,
 .activity-icon,
 .steps-icon {
-  min-width: 15px;
-  min-height: 15px;
-  max-width: 15px;
-  max-height: 15px;
+
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+
 }
 
 
@@ -181,6 +197,10 @@ main {
     grid-column: 2 / -1;
     font-weight: lighter;
     font-size: 2em;
+  }
+
+  .logo {
+    min-height: 8rem;
   }
 
   nav {
@@ -241,7 +261,14 @@ main {
   }
 
   .chart {
+    display: block;
     min-height: 17em;
+    max-height: 280px;
+  }
+
+  canvas {
+    max-height: 85% !important;
+    width: 100% !important;
   }
 }
 
@@ -367,8 +394,15 @@ main {
   }
 
   .chart {
+    display: block;
     min-height: 17em;
     min-width: 50vw;
+    max-height: 280px;
+  }
+
+  canvas {
+    max-height: 85% !important;
+    width: 100% !important;
   }
 
   .sleep {
@@ -484,9 +518,15 @@ main {
   }
 
   .chart {
+    display: block;
     min-height: 17em;
-    max-height: 300px;
+    max-height: 280px;
     min-width: 20vw;
+  }
+
+  canvas {
+    max-height: 85% !important;
+    width: 100% !important;
   }
 }
 
