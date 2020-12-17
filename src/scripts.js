@@ -277,7 +277,7 @@ let sleepHoursWeekChart = new Chart(sleepWeek, {
 });
 
 function userLatestHoursSleptAndQuality() {
-  latestSleep.innerText = `You slept ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "hoursSlept")} hours last night and ranked it with a quality of ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/06/21", "sleepQuality")}.`
+  latestSleep.innerText = `You slept ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/09/22", "hoursSlept")} hours last night and ranked it with a quality of ${sleepRepo.getUserSleepDataForDate(activeUser.id, "2019/09/22", "sleepQuality")}.`
 }
 
 function displayAverageSleepForProperty(property) {
@@ -291,7 +291,7 @@ function displayAverageSleepForProperty(property) {
 
 // Activity:
 function displayMilesWalked() {
-  let miles = activityRepo.gatherMilesWalked(activeUser, "2019/06/21");
+  let miles = activityRepo.gatherMilesWalked(activeUser, "2019/09/22");
   distanceWalked.innerText = `You walked ${miles} miles today!`
 }
 
