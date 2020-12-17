@@ -2,19 +2,23 @@ class ActivityRepo {
   constructor(activies) {
     this.allActivities = activies;
   }
+  getActivityDay(user, date, property) {
+    let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
+    return specificDay[property];
+  }
+  getUserWeek(user, date) {
+    let userActivities = this.allActivities.filter(activity => activity.userID === user.id);
+    let desiredDateIndex = userActivities.map(activity => activity.date).indexOf(date);
+    let desiredWeek = userActivities.slice(desiredDateIndex - 6, desiredDateIndex + 1);
+    return desiredWeek;
+  }
   gatherMilesWalked(user, date) {
     let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
     let int = ((user.strideLength * specificDay.numSteps) / 5280).toFixed(1);
     return parseFloat(int);
   }
-  gatherMinutesActive(user, date) {
-    let specificDay = this.allActivities.find(day => day.date === date && day.userID === user.id);
-    return specificDay.minutesActive;
-  }
   calcAverageMinActiveForAWeek(user, date) {
-    let userActivities = this.allActivities.filter(activity => activity.userID === user.id);
-    let desiredDateIndex = userActivities.map(activity => activity.date).indexOf(date);
-    let desiredWeek = userActivities.slice(desiredDateIndex - 6, desiredDateIndex + 1);
+    let desiredWeek = this.getUserWeek(user, date);
     let totalTimeActive = desiredWeek.reduce((totalMin, activity) => {
       totalMin += activity.minutesActive;
       return totalMin;
@@ -48,6 +52,28 @@ class ActivityRepo {
       return totalActive;
     }, 0);
     return parseFloat((sumActive / desiredDay.length).toFixed(1));
+  }
+  getStepStreak(user) {
+    let userActivities = this.allActivities.filter(activity => activity.userID === user.id);
+    let arr = [];
+    let allStreaks = userActivities.reduce((streaks, day, index) => {
+      if (index === 0) {
+        arr.push(day.date);
+        return streaks
+      }
+      if (userActivities[index - 1].numSteps < day.numSteps) {
+        arr.push(day.date);
+        if (arr.length >= 3) {
+          streaks[arr[0]] = arr;
+        }
+      } else {
+        arr = [];
+        arr.push(day.date);
+      }
+      return streaks;
+    }, {});
+    let last = allStreaks[Object.keys(allStreaks)[Object.keys(allStreaks).length - 1]];
+    return last
   }
 }
 

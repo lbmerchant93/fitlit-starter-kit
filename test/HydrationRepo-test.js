@@ -1,8 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sampleData = require('../test/sampleData');
-
-const Hydration = require('../src/Hydration');
 const HydrationRepo = require('../src/HydrationRepo');
 
 describe('HydrationRepo', function() {
@@ -16,20 +14,17 @@ describe('HydrationRepo', function() {
     expect(HydrationRepo).to.be.a('function');
   });
 
-  it('should instantiate a HydrationRepo', function() {
-    expect(hydrationRepo).to.be.an.instanceof(HydrationRepo);
-  });
-
   it('should hold all the Hydration objects', function() {
     expect(hydrationRepo.allHydrations).to.be.an('array');
     expect(hydrationRepo.allHydrations[0].numOunces).to.equal(1);
     expect(hydrationRepo.allHydrations[1].numOunces).to.equal(2);
+    expect(hydrationRepo.allHydrations.length).to.equal(17);
   });
 
 
   it('should have a method returning the average fluid ounces consumed per day for all time', function() {
-    expect(hydrationRepo.userLifetime(1)).to.equal(4);
-    expect(hydrationRepo.userLifetime(2)).to.equal(5);
+    expect(hydrationRepo.calcUserLifetimeHydration(1)).to.equal(4.9);
+    expect(hydrationRepo.calcUserLifetimeHydration(2)).to.equal(5);
   });
 
   it('should have a method returning the last 7 fluid ounces consumed per day', function() {
@@ -41,7 +36,7 @@ describe('HydrationRepo', function() {
       '2019/06/19': 4,
       '2019/06/20': 4,
       '2019/06/21': 10
-  });
+    });
     expect(hydrationRepo.retrieveWeekHydration(2, "2019/06/21")).to.deep.equal({
       '2019/06/15': 2,
       '2019/06/16': 5,
@@ -50,7 +45,7 @@ describe('HydrationRepo', function() {
       '2019/06/19': 5,
       '2019/06/20': 5,
       '2019/06/21': 5
-});
+    });
     expect(hydrationRepo.retrieveWeekHydration(5, "2019/06/21")).to.deep.equal({});
   });
 

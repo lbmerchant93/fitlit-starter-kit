@@ -18,11 +18,6 @@ describe('User', function() {
     expect(User).to.be.a('function');
   });
 
-  it('should instantiate a User', function() {
-    expect(user1).to.be.an.instanceof(User);
-    expect(user2).to.be.an.instanceof(User);
-  });
-
   it('should hold all the user data', function() {
     expect(user1.id).to.equal(1);
     expect(user1.name).to.equal("Luisa Hane");
@@ -49,5 +44,19 @@ describe('User', function() {
   it('should not take anything but an object as an argument', function() {
     let user3 = new User([11, 1, 3]);
     expect(user3.id).to.equal(undefined);
+    expect(user2).to.deep.equal({
+      "id": 2,
+      "name": "Jarvis Considine",
+      "address": "30086 Kathryn Port, Ciceroland NE 07273",
+      "email": "Dimitri.Bechtelar11@gmail.com",
+      "strideLength": 4.5,
+      "dailyStepGoal": 20000,
+      "friends": [
+        9,
+        18,
+        24,
+        19
+      ]
+    })
   });
 });

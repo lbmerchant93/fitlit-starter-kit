@@ -3,51 +3,100 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Activity Tracker</title>
+  <title>FitBook</title>
   <meta name="authors" content="Lucas Merchant & Matthew Dean">
   <meta name="description" content="FitLit Project">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 
 <body>
-  <header>
-    <img class="logo" />
-    <h1>Activity Tracker</h1>
-    <img class="logo" />
+  <header class="main-header">
+    <img src="../clipart4222500.png" alt="FitLit Logo" class="logo">
+    <h1 class="site-title">F i t B o o k</h1>
   </header>
-  <nav class="nav-bar">
-    <h2 class="display-message"></h2>
-    <article class="user-info">
-      user info
-    </article>
-    <article class="friend-info">
-      friend info
-    </article>
-  </nav>
-  <main class="stats">
-    <article class="sleep">
-      <header>Sleep</header>
-      <p>sleep</p>
-    </article>
-    <article class="hydration">
-      <header>Hydration</header>
-      <p class="hydration-week">
-
-      </p>
-      <p class="hydration-today">
-
-      </p>
-    </article>
-    <article class="activity">
-      <header>Activity</header>
-      <p>activity</p>
-    </article>
-    <article class="steps">
-      <header>Step Comparison</header>
-      <p class="step-goal-comparison">step goal comparison</p>
-    </article>
-  </main>
-
+  <section class="content-wrapper">
+    <nav class="nav-bar">
+      <h2 class="display-message"></h2>
+      <article class="user-info">
+        <button class="user-info-button" aria-expanded="false" aria-controls="sidebar-menu" aria-label="Open sidebar navigation menu" alt="User Info Button">Show Less</button>
+        <p class="user-name"></p>
+        <p class="user-address"></p>
+        <p class="user-email"></p>
+        <p class="user-stride-length"></p>
+        <p class="user-daily-step-goal"></p>
+      </article>
+      <article class="friend-info card">
+        <h2 class="friends-header">Friends</h2>
+        <p class="friends-list"></p>
+      </article>
+      <article class="user-tracking">
+        <article class="sleep card">
+          <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <p class="latest-sleep"></p>
+        </article>
+        <article class="sleep card">
+          <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <p class="average-sleep-hours"></p>
+        </article>
+        <article class="sleep card">
+          <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <p class="average-sleep-quality"></p>
+        </article>
+        <article class="hydration card">
+          <img class="hydration-icon" src="../images/hydration-icon.png" alt="hydration-icon">
+          <p class="hydration-today"></p>
+        </article>
+        <article class="activity card">
+          <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+          <p class="distance-walked"></p>
+        </article>
+      </article>
+    </nav>
+    <main class="stats">
+      <article class="sleep card chart">
+        <img class="sleep-icon" src="../images/sleep-icon.png" alt="sleep-icon">
+          <canvas class="sleep-week"></canvas>
+      </article>
+      <article class="hydration card chart">
+        <img class="hydration-icon" src="../images/hydration-icon.png" alt="hydration-icon">
+        <canvas class="hydration-chart"></canvas>
+      </article>
+      <article class="activity card chart daily">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+        <canvas class="daily-step-chart"></canvas>
+      </article>
+      <article class="activity card chart daily">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+        <canvas class="daily-stair-chart"></canvas>
+      </article>
+      <article class="activity card chart daily">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+        <canvas class="daily-active-chart"></canvas>
+      </article>
+      <article class="activity card chart">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+        <canvas class="steps-weekly-view"></canvas>
+      </article>
+      <article class="activity card chart">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+        <canvas class="stairs-weekly-view"></canvas>
+      </article>
+      <article class="activity card chart">
+        <img class="activity-icon" src="../images/activity-icon.png" alt="activity-icon">
+        <canvas class="minutes-active-weekly-view"></canvas>
+      </article>
+      <article class="steps streak card chart">
+        <img class="steps-icon" src="../images/steps-icon.png" alt="steps-icon">
+        <canvas class="last-step-streak"></canvas>
+      </article>
+      <article class="steps card chart">
+        <img class="steps-icon" src="../images/steps-icon.png" alt="steps-icon">
+        <canvas class="step-goal-comparison"></canvas>
+      </article>
+    </main>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/hydration.js"></script>
   <script type="text/javascript" src="../data/sleep.js"></script>
@@ -57,6 +106,10 @@
   <script type="text/javascript" src="./UserRepository.js"></script>
   <script type="text/javascript" src="./Hydration.js"></script>
   <script type="text/javascript" src="./HydrationRepo.js"></script>
+  <script type="text/javascript" src="./Sleep.js"></script>
+  <script type="text/javascript" src="./SleepRepo.js"></script>
+  <script type="text/javascript" src="./Activity.js"></script>
+  <script type="text/javascript" src="./ActivityRepo.js"></script>
   <script type="text/javascript" src="./scripts.js"></script>
 
 </body>

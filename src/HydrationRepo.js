@@ -2,14 +2,14 @@ class HydrationRepo {
   constructor(hydrations) {
     this.allHydrations = hydrations;
   }
-  userLifetime(id) {
+  calcUserLifetimeHydration(id) {
     let userHydrations = this.allHydrations.filter(hydration => {
       return hydration.userID === id;
     })
     let sumHydrations = userHydrations.reduce((total, day) => {
       return total += day.numOunces;
     }, 0)
-    return Math.floor(sumHydrations / userHydrations.length);
+    return parseFloat((sumHydrations / userHydrations.length).toFixed(1));
   }
   retrieveWeekHydration(id, date) {
     let userHydrations = this.allHydrations.filter(hydration => hydration.userID === id);
