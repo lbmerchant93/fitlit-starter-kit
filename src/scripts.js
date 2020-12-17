@@ -22,6 +22,7 @@ const stairsWeeklyView = document.querySelector(".stairs-weekly-view");
 const minsActiveWeeklyView = document.querySelector(".minutes-active-weekly-view");
 const friendsList = document.querySelector(".friends-list");
 const lastStepStreak = document.querySelector(".last-step-streak");
+const streakCard = document.querySelector(".streak");
 
 //Event Listeners
 window.addEventListener("load", initializeUserInfo);
@@ -619,16 +620,16 @@ new Chart(minsActiveWeeklyView, {
 });
 
 function getStreakNums() {
-  
+
   const streak = activityRepo.getStepStreak(activeUser);
   if (streak === undefined) {
-    return
+    return streakCard.classList.add("hidden");
   }
   let streakSteps = [];
   streak.forEach(day => {
     streakSteps.push(activityRepo.getActivityDay(activeUser, day.toString(), "numSteps"));
   })
-  
+
   return streakSteps
 }
 
@@ -638,8 +639,8 @@ new Chart(lastStepStreak, {
     labels: activityRepo.getStepStreak(activeUser),
     datasets: [{
       label: "Steps",
-      backgroundColor: "rgb(244, 194, 194)",
-      borderColor: "rgb(244, 194, 194)",
+      backgroundColor: "rgb(255, 131, 0)",
+      borderColor: "rgb(255, 131, 0)",
       data: getStreakNums()
     }]
   },

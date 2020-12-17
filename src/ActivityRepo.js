@@ -61,7 +61,7 @@ class ActivityRepo {
         arr.push(day.date);
         return streaks
       }
-      if (userActivities[index - 1].numSteps < day.numSteps && user.dailyStepGoal < userActivities[index - 1].numSteps) {
+      if (userActivities[index - 1].numSteps < day.numSteps) {
         arr.push(day.date);
         if (arr.length >= 3) {
           streaks[arr[0]] = arr;
@@ -75,7 +75,7 @@ class ActivityRepo {
     let last = allStreaks[Object.keys(allStreaks)[Object.keys(allStreaks).length - 1]];
     return last
   }
-} 
+}
 
 if (typeof module !== 'undefined') {
   module.exports = ActivityRepo;
