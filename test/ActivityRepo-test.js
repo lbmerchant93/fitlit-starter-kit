@@ -121,9 +121,9 @@ describe('ActivityRepo', function() {
 
   it('should find the latest three day step streak where each day increase the number of steps', function() {
     expect(activityRepo.getStepStreak(user1)).to.deep.equal([
-     "2019/06/18",
-     "2019/06/19",
-     "2019/06/20"
+      "2019/06/18",
+      "2019/06/19",
+      "2019/06/20"
     ]);
   });
 });

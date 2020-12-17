@@ -100,7 +100,7 @@ function toggleUserInfo() {
 
 
 // Step Goal Comprison:
-let stepGoalComparisonChart = new Chart(stepGoalComparison, {
+new Chart(stepGoalComparison, {
   type: 'bar',
   data: {
     datasets: [{
@@ -167,7 +167,7 @@ function displayStepStreak() {
 }
 
 // Hydration:
-let weekHydrationChart = new Chart(hydrationChart, {
+new Chart(hydrationChart, {
   type: 'bar',
   data: {
     labels: Object.keys(hydrationRepo.retrieveWeekHydration(activeUser.id, "2019/09/22")),
@@ -225,7 +225,7 @@ function displayHydrationToday() {
 }
 
 // Sleep:
-let sleepHoursWeekChart = new Chart(sleepWeek, {
+new Chart(sleepWeek, {
   type: "line",
   data: {
     labels: Object.keys(sleepRepo.getUserSleepWeekInfo(activeUser.id, "2019/09/22", "hoursSlept")),
@@ -305,7 +305,7 @@ function displayMilesWalked() {
   distanceWalked.innerText = `You walked ${miles} miles today!`
 }
 
-let dailyStepDisplay = new Chart(dailyStepChart, {
+new Chart(dailyStepChart, {
   type: 'bar',
   data: {
     labels: ['Daily Step Counter'],
@@ -362,7 +362,7 @@ let dailyStepDisplay = new Chart(dailyStepChart, {
   }
 });
 
-let dailyStairDisplay = new Chart(dailyStairChart, {
+new Chart(dailyStairChart, {
   type: 'bar',
   data: {
     labels: ['Daily Stair Counter'],
@@ -413,7 +413,7 @@ let dailyStairDisplay = new Chart(dailyStairChart, {
   }
 });
 
-let dailyActiveDisplay = new Chart(dailyActiveChart, {
+new Chart(dailyActiveChart, {
   type: 'bar',
   data: {
     labels: ['Daily Minutes Active Counter'],
@@ -465,7 +465,7 @@ let dailyActiveDisplay = new Chart(dailyActiveChart, {
   }
 });
 
-let stepsWeeklyChart = new Chart(stepsWeeklyView, {
+new Chart(stepsWeeklyView, {
   type: 'line',
   data: {
     labels: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.date),
@@ -519,7 +519,7 @@ let stepsWeeklyChart = new Chart(stepsWeeklyView, {
   }
 });
 
-let stairsWeeklyChart = new Chart(stairsWeeklyView, {
+new Chart(stairsWeeklyView, {
   type: 'line',
   data: {
     labels: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.date),
@@ -573,7 +573,7 @@ let stairsWeeklyChart = new Chart(stairsWeeklyView, {
     }}
 });
 
-let minsActiveWeeklyChart = new Chart(minsActiveWeeklyView, {
+new Chart(minsActiveWeeklyView, {
   type: 'line',
   data: {
     labels: activityRepo.getUserWeek(activeUser, "2019/09/22").map(day => day.date),
