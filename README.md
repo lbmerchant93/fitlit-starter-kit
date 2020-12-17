@@ -18,7 +18,8 @@
 ## About The Project
 
 
-FitBook is a fitness application designed to be used with various devices. The repository demonstrates:
+FitBook is a fitness application designed to be used with various devices. We were tasked with taking large data files and connecting them via javaScript in order to create relatable, presentable information. 
+The repository demonstrates:
   * expanded implementation of ES6 (syntax and prototype methods)
   * SRP and DRY code
   * accounting for multiple device sizes by utilizing responsive layout/design
@@ -68,7 +69,7 @@ open src/index.html
   * On click, edit DOM to display current players game piece
   * Switch DOM elements to represent whos turn it is
   * Update player instances to "hold" game placements
-![Game Placements](https://i.imgur.com/Mz6MCBL.png)
+![Graphs](https://i.imgur.com/9Ml2Cyx.gif])
 
 
 
@@ -79,7 +80,7 @@ open src/index.html
   * Updates player wins to local storage
   * Displays winner on page
   * Resets board after timeout
-![Win Counter](https://i.imgur.com/BQ0zDns.png)
+![User Info](https://i.imgur.com/gykSkrF.gif)
 
 
 
@@ -88,7 +89,7 @@ open src/index.html
   * Checks turn counter and returns a draw if the board is full
   * Edits DOM elements to show a draw was reached, does not add wins to either player
   * Resets board after timeout
-![Draw Alert](https://i.imgur.com/5P0xHly.png)
+![Multi View](https://i.imgur.com/ubW2DwR.gif)
   
 
 
@@ -113,20 +114,11 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-
-
-
-
-[Lucas Merchant](NEED LUCAS EMAIL)
-
-
-
-
-
+[Lucas Merchant](lbmerchant93@gmail.com)
 [Matthew Dean](deanma95@gmail.com)
 
-Project Link: [https://github.com/mattdeann/tictactoe](https://github.com/lbmerchant93/fitlit-starter-kit)
 
+Project Link: [https://github.com/mattdeann/tictactoe](https://github.com/lbmerchant93/fitlit-starter-kit)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
