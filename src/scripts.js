@@ -21,6 +21,7 @@ const stepsWeeklyView = document.querySelector(".steps-weekly-view");
 const stairsWeeklyView = document.querySelector(".stairs-weekly-view");
 const minsActiveWeeklyView = document.querySelector(".minutes-active-weekly-view");
 const friendsList = document.querySelector(".friends-list");
+const lastStepStreak = document.querySelector(".last-step-streak");
 
 //Event Listeners
 window.addEventListener("load", initializeUserInfo);
@@ -44,6 +45,7 @@ function initializeUserInfo() {
   displayAverageSleepForProperty('sleepQuality');
   displayMilesWalked();
   displayFriends();
+  displayStepStreak();
 }
 
 // User:
@@ -80,14 +82,14 @@ function toggleUserInfo() {
     userInfoButton.innerText = "Show Less";
     userInfoButton.setAttribute('aria-expanded', 'true');
     userInfoButton.setAttribute(
-      'aria-label', 
+      'aria-label',
       'Show Less User Info'
     );
   } else {
     userInfoButton.innerText = "Show More";
     userInfoButton.setAttribute('aria-expanded', 'false');
     userInfoButton.setAttribute(
-      'aria-label', 
+      'aria-label',
       'Show More User Info'
     );
   }
@@ -155,6 +157,14 @@ let stepGoalComparisonChart = new Chart(stepGoalComparison, {
     }
   }
 });
+
+function displayStepStreak() {
+  let streak = activityRepo.getStepStreak(activeUser);
+  streak.forEach(day => {
+    lastStepStreak.innerText += `${day}
+    `
+  })
+}
 
 // Hydration:
 let weekHydrationChart = new Chart(hydrationChart, {

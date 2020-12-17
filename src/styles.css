@@ -160,6 +160,12 @@ canvas {
   background-color: rgb(253, 48, 255);
 }
 
+.streak{
+  font-size: 1.0rem;
+  font-weight: lighter;
+  min-height: auto;
+}
+
 .sleep-icon,
 .hydration-icon,
 .activity-icon,
