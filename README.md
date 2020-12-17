@@ -66,9 +66,7 @@ open src/index.html
 
 ### Users are able to see their stored data in graph representation
 
-  * On click, edit DOM to display current players game piece
-  * Switch DOM elements to represent whos turn it is
-  * Update player instances to "hold" game placements
+
 ![Graphs](https://i.imgur.com/9Ml2Cyx.gif])
 
 
@@ -76,19 +74,12 @@ open src/index.html
 ### Users are able to see their info as well as their friends daily step goal
   
 
-  * Adds win to player instance using incremental win counter
-  * Updates player wins to local storage
-  * Displays winner on page
-  * Resets board after timeout
 ![User Info](https://i.imgur.com/gykSkrF.gif)
 
 
 
 ### Users can open the app on multiple devices
 
-  * Checks turn counter and returns a draw if the board is full
-  * Edits DOM elements to show a draw was reached, does not add wins to either player
-  * Resets board after timeout
 ![Multi View](https://i.imgur.com/ubW2DwR.gif)
   
 
