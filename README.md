@@ -106,10 +106,11 @@ Contributions are what make the open source community such an amazing place to b
 ## Contact
 
 [Lucas Merchant](lbmerchant93@gmail.com)
+
 [Matthew Dean](deanma95@gmail.com)
 
 
-Project Link: [https://github.com/mattdeann/tictactoe](https://github.com/lbmerchant93/fitlit-starter-kit)
+Project Link: [FitBook](https://github.com/lbmerchant93/fitlit-starter-kit)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
