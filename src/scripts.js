@@ -28,12 +28,12 @@ window.addEventListener("load", initializeUserInfo);
 userInfoButton.addEventListener("click", toggleUserInfo);
 
 //Global Variables
-let activeUser = new User(userData[getRandomIndex(userData)]);
-let userRepo = new UserRepository(userData);
-let hydration = new Hydration(hydrationData[0]);
-let hydrationRepo = new HydrationRepo(hydrationData);
-let sleepRepo = new SleepRepo(sleepData);
-let activityRepo = new ActivityRepo(activityData);
+const activeUser = new User(userData[getRandomIndex(userData)]);
+const userRepo = new UserRepository(userData);
+const hydration = new Hydration(hydrationData[0]);
+const hydrationRepo = new HydrationRepo(hydrationData);
+const sleepRepo = new SleepRepo(sleepData);
+const activityRepo = new ActivityRepo(activityData);
 
 //Event Handlers and Functions
 function initializeUserInfo() {
@@ -45,7 +45,6 @@ function initializeUserInfo() {
   displayAverageSleepForProperty('sleepQuality');
   displayMilesWalked();
   displayFriends();
-  displayStepStreak();
 }
 
 // User:
@@ -157,14 +156,6 @@ new Chart(stepGoalComparison, {
     }
   }
 });
-
-function displayStepStreak() {
-  let streak = activityRepo.getStepStreak(activeUser);
-  streak.forEach(day => {
-    lastStepStreak.innerText += `${day}
-    `
-  })
-}
 
 // Hydration:
 new Chart(hydrationChart, {
@@ -625,4 +616,70 @@ new Chart(minsActiveWeeklyView, {
         }
       }]
     }}
+});
+
+function getStreakNums() {
+  
+  const streak = activityRepo.getStepStreak(activeUser);
+  if (streak === undefined) {
+    return
+  }
+  let streakSteps = [];
+  streak.forEach(day => {
+    streakSteps.push(activityRepo.getActivityDay(activeUser, day.toString(), "numSteps"));
+  })
+  
+  return streakSteps
+}
+
+new Chart(lastStepStreak, {
+  type: 'bar',
+  data: {
+    labels: activityRepo.getStepStreak(activeUser),
+    datasets: [{
+      label: "Steps",
+      backgroundColor: "rgb(244, 194, 194)",
+      borderColor: "rgb(244, 194, 194)",
+      data: getStreakNums()
+    }]
+  },
+  options: {
+    maintainAspectRatio: false,
+    title: {
+      display: true,
+      text: "Latest Streak of Meeting Step Goal",
+      fontSize: 16,
+      fontColor: "rgb(0, 0, 0)"
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+          beginAtZero: true
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Steps Taken",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "rgb(0, 0, 0)",
+        },
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
+          fontStyle: 'bold',
+          fontColor: "rgb(0, 0, 0)"
+        }
+      }]
+    }
+  }
 });
