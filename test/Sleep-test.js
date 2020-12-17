@@ -25,7 +25,6 @@ describe('Sleep', function() {
     expect(sleep2.sleepQuality).to.equal(4.7);
   });
 
-
   it('should not take anything but an object as an argument', function() {
     let sleep3 = new Sleep([15, 16, 3]);
     expect(sleep3.userID).to.equal(undefined);

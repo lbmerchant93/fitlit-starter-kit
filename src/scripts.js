@@ -620,7 +620,6 @@ new Chart(minsActiveWeeklyView, {
 });
 
 function getStreakNums() {
-
   const streak = activityRepo.getStepStreak(activeUser);
   if (streak === undefined) {
     return streakCard.classList.add("hidden");
@@ -629,7 +628,6 @@ function getStreakNums() {
   streak.forEach(day => {
     streakSteps.push(activityRepo.getActivityDay(activeUser, day.toString(), "numSteps"));
   })
-
   return streakSteps
 }
 

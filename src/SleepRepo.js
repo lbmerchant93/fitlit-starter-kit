@@ -2,7 +2,6 @@ class SleepRepo {
   constructor(sleeps) {
     this.allSleeps = sleeps;
   }
-
   getAvgSleepData(id, property) {
     let allUserSleeps = this.allSleeps.filter(sleep => {
       return sleep.userID === id;
@@ -12,13 +11,11 @@ class SleepRepo {
     }, 0)
     return parseFloat((sumSleep / allUserSleeps.length).toFixed(1));
   }
-
   getUserSleepDataForDate(id, date, property) {
     let userSleeps = this.allSleeps.filter(sleep => sleep.userID === id);
     let specificSleep = userSleeps.find(sleep => sleep.date === date);
     return specificSleep[property];
   }
-
   getUserSleepWeekInfo(id, date, property) {
     let userSleeps = this.allSleeps.filter(sleep => sleep.userID === id);
     let desiredDateIndex = userSleeps.map(sleep => sleep.date).indexOf(date);
@@ -28,7 +25,6 @@ class SleepRepo {
       return week;
     }, {});
   }
-
   averageAllUsersSleep() {
     let sumAllSleeps = this.allSleeps.reduce((totalSleepHours, sleep) => {
       totalSleepHours += sleep.hoursSlept;
@@ -36,7 +32,6 @@ class SleepRepo {
     }, 0)
     return parseFloat((sumAllSleeps / this.allSleeps.length).toFixed(1));
   }
-
   averageQualityForAWeek(date, id) {
     let userSleeps = this.allSleeps.filter(sleep => sleep.userID === id);
     let desiredDateIndex = userSleeps.map(sleep => sleep.date).indexOf(date);
@@ -46,9 +41,7 @@ class SleepRepo {
       return weekTotal;
     }, 0);
     return parseFloat((weekTotal / 7).toFixed(1));
-
   }
-
   findAllUsersQualityOverThree(userRepo, date) {
     let restedUsers = userRepo.users.filter(user => {
       let userAvg = this.averageQualityForAWeek(date, user.id);
@@ -58,7 +51,6 @@ class SleepRepo {
     })
     return restedUsers.map(user => user.id)
   }
-
   findMostRestedUsers(date) {
     let desiredDay = this.allSleeps.filter(sleep => sleep.date === date);
     let sortedHoursSlept = desiredDay.sort((a, b) => {

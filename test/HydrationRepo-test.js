@@ -21,7 +21,6 @@ describe('HydrationRepo', function() {
     expect(hydrationRepo.allHydrations.length).to.equal(17);
   });
 
-
   it('should have a method returning the average fluid ounces consumed per day for all time', function() {
     expect(hydrationRepo.calcUserLifetimeHydration(1)).to.equal(4.9);
     expect(hydrationRepo.calcUserLifetimeHydration(2)).to.equal(5);
